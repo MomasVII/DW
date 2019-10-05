@@ -1,0 +1,90 @@
+Multiplayer
+
+Location: Carpark
+Loads Panel overlay.
+
+Shows Wins Losses
+Set bet amount (Max $10000)
+Pink Slip option
+public/private
+Rank
+Level (Slow, Medium, Fast) Sets car speed variables
+
+Automatically matches or creates a match
+Run your Race
+Replay plays both cars
+Winner pays out
+
+Specifications:
+250,000 max files
+100GB max space
+150kb ghost file size
+100,000,000kb = 666,666 ghost files
+
+Workflow:
+---Enter PVP Collider---
+    - Search box for finding friends game
+    - History of races and results
+    - Show Your Rank
+    * Ranking based on stars earned i.e. how tuned your car can be (Public rank worked out on wins/losses)
+    - Show all pending games (SELECT * FROM pvp_db)
+        - Bet amount or pink slip
+        - Unique ID
+        - (Maybe show car you're racing)
+    - Show Create New game
+
+---Select existing game---
+Show demo of level like normal (Not opponent demo)
+Click to start
+Race starts (no ghost)
+Counter showing lives remaining
+Finished Race
+    - Show replay race button
+        - Restart level with 2 replays racing each other
+        - Once one car finished show end box with:
+            - Each players time
+            - Winnings or losses
+            - Quit button
+    - Quit Button
+        Return to Home level
+------------
+
+---Create new game---
+Create unique race ID
+Select bet amount
+Select public or private
+level selected randomly based on what levels you have unlocked
+Click "Race"
+Race starts
+5 lives to get across the line
+save score and replay to DB
+DB: Racer, Level, CarUsed, Time, betAmount, GhostID, timestamp
+-------------
+
+Level based on how many stars you have
+Blind picking of person to vs
+Start your own games
+1 Race. 5 attempts. Die 5 times can only end in draw if other player does the same
+
+Pink Slips - Winner takes the others car
+
+
+Load Garage on 1st game start
+"Hi, my name is Izzy, and you must be Thomas. Welcome to my garage. I'm glad you've decided to work for me. I've already lost so many employees to the elements out there. Let's hope you can survive longer than they did. Don't be nervous, if you're as good a driver as you say this should be a breeze.
+So what's the job? I just need you to race. That's it. There are dozens of tracks around here that all payout big if you can beat the track record. We'll split it 50/50 with whatever you bring in. Before you head out let me show you around and set you up with a new set of wheels."
+
+Introduce
+How to buy
+Change color
+Upgrading car
+
+"Come see me tomorrow for a reward"
+
+
+Levels need amount of stars to unlock
+Reset car to start location of where entered
+Optimise content to load and unload based on location
+Start level once ghost is loaded
+Play offline mode
+Languages
+Game Audio
