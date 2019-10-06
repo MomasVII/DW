@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Right_Turn
+  - Left_Turn
+  - Skidmarks
+  - Brain
+  - Ghost
+  - Fire
+  - LowQuality
+  - MediumQuality
+  - HighQuality
+  - Personal
+  - DriftScore
+  - ErrorText
+  - Demo
+  - RotateColl
+  - CustomCull
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - PostProcessing
+  - Clouds
+  - Focus
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Car
+    uniqueID: 1152603927
+    locked: 0

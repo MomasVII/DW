@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/scenes/Garage.unity
+    guid: 8ee7c70746a3d1041accded2ebc88e2d
+  - enabled: 1
+    path: Assets/scenes/Home.unity
+    guid: 4c8726ba852776848a1deab3f686428d
+  - enabled: 1
+    path: Assets/scenes/Grass.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/scenes/Grass2.unity
+    guid: be59163d8bed7e0449d47cf28fb57854
+  - enabled: 1
+    path: Assets/scenes/Snow.unity
+    guid: 75a8d4c9aa46ec34aa251921fdb7bbc1
+  - enabled: 1
+    path: Assets/scenes/Lava2.unity
+    guid: 970591adb0b2fa64cbf053341c580230
+  - enabled: 1
+    path: Assets/scenes/Lava3.unity
+    guid: 5f4043bc8b7da3c4084da305b5e8ddde
+  - enabled: 1
+    path: Assets/scenes/Grass3.unity
+    guid: a23dc323fad118b45ab4ae2e18ea7b61
+  m_configObjects: {}
