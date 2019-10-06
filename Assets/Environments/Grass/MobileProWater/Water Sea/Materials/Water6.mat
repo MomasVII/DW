@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Water6
+  m_Shader: {fileID: 4800000, guid: db6d695a39d5d91479f8d89fb33bbddd, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Cube:
+        m_Texture: {fileID: 2800000, guid: 86ad23c623f950a4997067186e283be5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 231af3d522fc73e47a733dc653e4ff1a, type: 3}
+        m_Scale: {x: 15, y: 15}
+        m_Offset: {x: 0, y: 0}
+    - _SpecTex:
+        m_Texture: {fileID: 2800000, guid: 7d505778d3257764397c527693ab8da4, type: 3}
+        m_Scale: {x: 20, y: 20}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AlphaPower: 1.6
+    - _CubePower: 1.1
+    - _Shininess: 0.22
+    - _SpecPower: 1.2
+    - _WaveCount: 123.28
+    - _WaveHeight: 0.09
+    - _WaveSpeed: 28.92
+    m_Colors:
+    - _Color: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 1}
+    - _SpecColor: {r: 0.764151, g: 0.69431406, b: 0.56590426, a: 1}
