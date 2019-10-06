@@ -2240,8 +2240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f946e87883c3fc240b9dda8cc98a1c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Welcome
-  levelName: Grass3
+  sceneName: Grass3
+  levelName: Welcome
   highscore: {fileID: 967289283}
   levelTMP: {fileID: 654886346}
   star1: {fileID: 140397627}
@@ -9296,8 +9296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f946e87883c3fc240b9dda8cc98a1c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Lava Lake
-  levelName: Lava2
+  sceneName: Lava2
+  levelName: Lava Lake
   highscore: {fileID: 1779149467}
   levelTMP: {fileID: 795852675}
   star1: {fileID: 2111023947}

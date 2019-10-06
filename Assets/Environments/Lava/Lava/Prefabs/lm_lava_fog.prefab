@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4000012261702450}
   - component: {fileID: 198000013826094518}
   - component: {fileID: 199000013691142838}
-  - component: {fileID: 1139079686}
   m_Layer: 0
   m_Name: lm_lava_fog
   m_TagString: Untagged
@@ -4658,17 +4657,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &1139079686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000013343303582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f82ef499625c299499b2c9c95db8d516, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cullingRadius: 29.5
-  target: {fileID: 198000013826094518}

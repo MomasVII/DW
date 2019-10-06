@@ -336,7 +336,6 @@ public class Ghost : MonoBehaviour {
 			wheelrotMarkRight = wheelRecordRight.rotation,
 			wheelrotMarkLeft = wheelRecordLeft.rotation
         };
-		Debug.Log(wheelRecordLeft.rotation);
         framesList.Add(newFrame);
 	}
 

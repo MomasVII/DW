@@ -67,10 +67,10 @@ public class CameraController : MonoBehaviour
 	void Update ()
 	{
 		carPos = car.transform.forward.x * 15;
-		if(tagString == "Demo") {
+		if(tagString != "Demo") {
 			carPos = 0; // Remove for moving camera
 		}
-
+		carPos = 0;
 		if(!finished) {
 			/*transform.position = new Vector3(car.transform.position.x-posX+carPos, car.transform.position.y+posY, car.transform.position.z-posZ) + car.transform.forward * (Mathf.Clamp(speed, 0, 0.70f)*30);
 			orthCamera.orthographicSize = orthS+(Mathf.Clamp(speed, 0, 0.70f)*30);*/
@@ -86,7 +86,6 @@ public class CameraController : MonoBehaviour
 			        car.transform.position.z-posZ)
 			      + camSpeedOffset;
 			} else {
-				Debug.Log("test");
 				transform.position = new Vector3(car.transform.position.x-5f+carPos, car.transform.position.y+6.0f, car.transform.position.z-5);
 				orthCamera.orthographicSize = 20.0f+(Mathf.Clamp(speed, 0, 0.70f)*10);
 				transition = false;
@@ -98,7 +97,8 @@ public class CameraController : MonoBehaviour
 			transition = false;
 		} else {
 			transition = true;
-			transform.Translate(Vector3.right * Time.deltaTime * 4);
+			/*transform.LookAt(car.transform);
+			transform.Translate(Vector3.right * Time.deltaTime * 4);*/
 		}
 
 		if (transition) {

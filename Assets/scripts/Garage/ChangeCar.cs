@@ -30,7 +30,6 @@ public class ChangeCar : MonoBehaviour {
 	public Button keyImage;
 
 	//Change player cash
-	int storePlayerCash;
 	public TMP_Text playerCash;
 
 	//Engine Start Audio
@@ -74,6 +73,9 @@ public class ChangeCar : MonoBehaviour {
 	private string statChose;
 	public TMP_Text starNumber;
 
+	//Update player cash
+	private MoneyController moneyController;
+
 	// Use this for initialization
 	void Start () {
 
@@ -105,8 +107,8 @@ public class ChangeCar : MonoBehaviour {
 
 		changeWheelColliders = GetComponent<ChangeWheelColliders>();
 
-		storePlayerCash = PlayerPrefs.GetInt("playerCash", 0);
-		playerCash.text = "$"+storePlayerCash.ToString("n0");
+		playerCash.text = "$"+PlayerPrefs.GetInt("playerCash", 0).ToString("n0");
+		moneyController = GetComponent<MoneyController>();
 
 		if(PlayerPrefs.HasKey("playerCar")) {
 			anim = character.GetComponent<Animator>();
@@ -381,14 +383,14 @@ public class ChangeCar : MonoBehaviour {
 
 	public void buyCar() {
 		int currentCarPrice =  System.Convert.ToInt32(dict[selectedCar.ToString()]["Price"].ToString());
-		if(storePlayerCash > currentCarPrice) {
+		if(PlayerPrefs.GetInt("playerCash", 0) > currentCarPrice) {
 			//I can afford this car
 			if(!carSet) {
 				garageTutorial.firstCarBought();
 			}
-			storePlayerCash -= currentCarPrice;
-			PlayerPrefs.SetInt("playerCash", storePlayerCash);
-			playerCash.text = "$"+storePlayerCash.ToString("n0");
+
+			//Set playerCash
+			moneyController.updateDriftMoney(-Mathf.Abs(currentCarPrice));
 
 			GameDataController.purchaseCar(selectedCar, (int)dict[selectedCar.ToString()]["Speed"], (int)dict[selectedCar.ToString()]["Acceleration"], (int)dict[selectedCar.ToString()]["Handling"]);
 			ownedCar();
@@ -496,20 +498,17 @@ public class ChangeCar : MonoBehaviour {
 
 		if(colorType == "Spec") {
 			PlayerPrefs.SetString("Car"+selectedCar+"SpecColour", selectedColor);
-			storePlayerCash -= 500;
+			moneyController.updateDriftMoney(-500);
 			selectColorButton(globalColorName, myColorsSpec);
 			paintSpecMoney.SetActive(false);
 			paintSpecGO.SetActive(false);
 		} else if (colorType == "Stock") {
-			storePlayerCash -= 200;
+			moneyController.updateDriftMoney(-250);
 			PlayerPrefs.SetString("Car"+selectedCar+"Colour", selectedColor);
 			selectColorButton(globalColorName, myColors);
 			paintMoney.SetActive(false);
 			paintGO.SetActive(false);
 		}
-
-		PlayerPrefs.SetInt("playerCash", storePlayerCash);
-		playerCash.text = "$"+storePlayerCash.ToString("n0");
 
 		//Hide lock icon
 		Transform result = colorsParent.transform.Find(globalColorName);
