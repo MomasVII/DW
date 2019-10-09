@@ -30,10 +30,13 @@ public class GarageTutorial : MonoBehaviour {
 
 	private string scriptUsername;
 
+	//Get Garage Script to change car
+	private ChangeCar changecar;
 
 	bool startTutorial = false;
 
 	public void StartTutorial () {
+		changecar = transform.GetComponent<ChangeCar>();
 		anim = character.GetComponent<Animator>();
 		speechPanel.SetActive(true);
 
@@ -72,7 +75,7 @@ public class GarageTutorial : MonoBehaviour {
 				startTyping = false;
 				typing = true;
 				errorText.text = "";
-				StartCoroutine(ShowText("So "+mainInputField.text+", my friends tell me you're one hell of a racer. I'm glad you've decided to work for me. Let's hope you can survive longer than my last crew. Don't be nervous, if you're as good a driver as you say there should be no problem."));
+				StartCoroutine(ShowText("So "+mainInputField.text+", my friends tell me you're one hell of a racer. I'm glad you've decided to work for me. If you're as good a driver as people say there should be no problem."));
 				inputField.SetActive(false);
 			} else if(!typing && speechIndex == 3 && startTyping) {
 				startTyping = false;
@@ -96,6 +99,7 @@ public class GarageTutorial : MonoBehaviour {
 				prevButton.SetActive(true);
 				carInfo.SetActive(true);
 				nextSpeechButton.SetActive(false);
+				changecar.specificCar(1);
 			} else if(!typing && speechIndex == 7 && startTyping) {
 				speechPanel.SetActive(true);
 				nextSpeechButton.SetActive(true);

@@ -117,8 +117,8 @@ public class ChangeCar : MonoBehaviour {
 			currentCar = PlayerPrefs.GetInt("playerCar", 0);
 			selectedCar = currentCar;
 		} else {
-			currentCar = 20;
-			selectedCar = 20;
+			currentCar = 23;
+			selectedCar = 23;
 			carSet = false;
 		}
 
@@ -126,8 +126,9 @@ public class ChangeCar : MonoBehaviour {
 
 	    theCar[currentCar] = Instantiate(Resources.Load("Car"+selectedCar, typeof(GameObject)), startPosition, transform.rotation) as GameObject;
 
-		//Disable dust
+		//Disable dust and flames
 		theCar[currentCar].transform.GetChild(2).gameObject.SetActive(false);
+		theCar[currentCar].transform.GetChild(3).gameObject.SetActive(false);
 
 		if(carSet) {
 			ownedCar();
@@ -145,7 +146,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 15400 },
 			{ "Speed", 70 },
 			{ "Acceleration", 90 },
-			{ "Handling", 30 }
+			{ "Handling", 20 }
 		});
 
 		dict.Add("2", new Dictionary<string, object>()
@@ -153,7 +154,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 17990 },
 			{ "Speed", 70 },
 			{ "Acceleration", 92 },
-			{ "Handling", 31 }
+			{ "Handling", 21 }
 		});
 
 		dict.Add("3", new Dictionary<string, object>()
@@ -161,169 +162,167 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 25880 },
 			{ "Speed", 73 },
 			{ "Acceleration", 94 },
-			{ "Handling", 34 }
+			{ "Handling", 24 }
 		});
 
 		dict.Add("4", new Dictionary<string, object>()
 		{
-			{ "Price", 35670 },
-			{ "Speed", 76 },
-			{ "Acceleration", 97 },
-			{ "Handling", 38 }
+			{ "Price", 26000 },
+			{ "Speed", 78 },
+			{ "Acceleration", 99 },
+			{ "Handling", 25 }
 		});
 
 		dict.Add("5", new Dictionary<string, object>()
 		{
-			{ "Price", 46590 },
-			{ "Speed", 82 },
-			{ "Acceleration", 95 },
-			{ "Handling", 36 }
+			{ "Price", 35670 },
+			{ "Speed", 76 },
+			{ "Acceleration", 97 },
+			{ "Handling", 28 }
 		});
-
 		dict.Add("6", new Dictionary<string, object>()
 		{
-			{ "Price", 48099 },
-			{ "Speed", 85 },
+			{ "Price", 42000 },
+			{ "Speed", 84 },
 			{ "Acceleration", 100 },
-			{ "Handling", 30 }
+			{ "Handling", 28 }
 		});
 
 		dict.Add("7", new Dictionary<string, object>()
 		{
-			{ "Price", 52590 },
-			{ "Speed", 79 },
-			{ "Acceleration", 100 },
-			{ "Handling", 36 }
+			{ "Price", 46590 },
+			{ "Speed", 82 },
+			{ "Acceleration", 95 },
+			{ "Handling", 26 }
 		});
 
 		dict.Add("8", new Dictionary<string, object>()
 		{
-			{ "Price", 59670 },
-			{ "Speed", 84 },
-			{ "Acceleration",98 },
-			{ "Handling", 39 }
+			{ "Price", 48099 },
+			{ "Speed", 85 },
+			{ "Acceleration", 100 },
+			{ "Handling", 20 }
 		});
 
 		dict.Add("9", new Dictionary<string, object>()
 		{
-			{ "Price", 64909 },
-			{ "Speed", 77 },
-			{ "Acceleration", 103 },
-			{ "Handling", 38 }
+			{ "Price", 52590 },
+			{ "Speed", 79 },
+			{ "Acceleration", 100 },
+			{ "Handling", 26 }
 		});
 
 		dict.Add("10", new Dictionary<string, object>()
 		{
-			{ "Price", 70900 },
-			{ "Speed", 79 },
-			{ "Acceleration", 99 },
-			{ "Handling", 37 }
+			{ "Price", 59670 },
+			{ "Speed", 84 },
+			{ "Acceleration",98 },
+			{ "Handling", 29 }
 		});
 
 		dict.Add("11", new Dictionary<string, object>()
 		{
-			{ "Price", 75650 },
-			{ "Speed", 80 },
-			{ "Acceleration", 112 },
-			{ "Handling", 40 }
+			{ "Price", 64909 },
+			{ "Speed", 77 },
+			{ "Acceleration", 103 },
+			{ "Handling", 28 }
 		});
 
 		dict.Add("12", new Dictionary<string, object>()
 		{
-			{ "Price", 80000 },
-			{ "Speed", 85 },
-			{ "Acceleration", 106 },
-			{ "Handling", 38 }
+			{ "Price", 70900 },
+			{ "Speed", 79 },
+			{ "Acceleration", 99 },
+			{ "Handling", 27 }
 		});
 
 		dict.Add("13", new Dictionary<string, object>()
 		{
-			{ "Price", 88600 },
-			{ "Speed", 94 },
+			{ "Price", 75650 },
+			{ "Speed", 80 },
 			{ "Acceleration", 112 },
-			{ "Handling", 36 }
+			{ "Handling", 30 }
 		});
 
 		dict.Add("14", new Dictionary<string, object>()
 		{
-			{ "Price", 100000 },
-			{ "Speed", 95 },
-			{ "Acceleration", 108 },
-			{ "Handling", 40 }
+			{ "Price", 80000 },
+			{ "Speed", 85 },
+			{ "Acceleration", 106 },
+			{ "Handling", 28 }
 		});
 
 		dict.Add("15", new Dictionary<string, object>()
 		{
-			{ "Price", 154670 },
-			{ "Speed", 93 },
-			{ "Acceleration", 115 },
-			{ "Handling", 45 }
+			{ "Price", 88600 },
+			{ "Speed", 94 },
+			{ "Acceleration", 112 },
+			{ "Handling", 26 }
 		});
 
 		dict.Add("16", new Dictionary<string, object>()
 		{
-			{ "Price", 459850 },
-			{ "Speed", 93 },
-			{ "Acceleration", 112 },
-			{ "Handling", 44 }
+			{ "Price", 100000 },
+			{ "Speed", 95 },
+			{ "Acceleration", 108 },
+			{ "Handling", 30 }
 		});
 
 		dict.Add("17", new Dictionary<string, object>()
 		{
-			{ "Price", 1000000 },
-			{ "Speed", 90 },
-			{ "Acceleration", 114 },
-			{ "Handling", 41 }
+			{ "Price", 120000 },
+			{ "Speed", 93 },
+			{ "Acceleration", 104 },
+			{ "Handling", 30 }
 		});
 
 		dict.Add("18", new Dictionary<string, object>()
 		{
-			{ "Price", 1200500 },
-			{ "Speed", 92 },
-			{ "Acceleration", 110 },
+			{ "Price", 154670 },
+			{ "Speed", 93 },
+			{ "Acceleration", 115 },
 			{ "Handling", 35 }
 		});
 
 		dict.Add("19", new Dictionary<string, object>()
 		{
-			{ "Price", 1500000 },
-			{ "Speed", 95 },
-			{ "Acceleration", 116 },
-			{ "Handling", 45 }
+			{ "Price", 459850 },
+			{ "Speed", 93 },
+			{ "Acceleration", 112 },
+			{ "Handling", 34 }
 		});
 
 		dict.Add("20", new Dictionary<string, object>()
 		{
-			{ "Price", 2000000 },
-			{ "Speed", 100 },
-			{ "Acceleration", 120 },
-			{ "Handling", 45 }
+			{ "Price", 1000000 },
+			{ "Speed", 90 },
+			{ "Acceleration", 114 },
+			{ "Handling", 31 }
 		});
 
 		dict.Add("21", new Dictionary<string, object>()
 		{
-			{ "Price", 120000 },
-			{ "Speed", 93 },
-			{ "Acceleration", 104 },
-			{ "Handling", 40 }
+			{ "Price", 1200500 },
+			{ "Speed", 92 },
+			{ "Acceleration", 110 },
+			{ "Handling", 25 }
 		});
 
 		dict.Add("22", new Dictionary<string, object>()
 		{
-			{ "Price", 44000 },
-			{ "Speed", 84 },
-			{ "Acceleration", 100 },
-			{ "Handling", 38 }
+			{ "Price", 1500000 },
+			{ "Speed", 95 },
+			{ "Acceleration", 116 },
+			{ "Handling", 35 }
 		});
 
 		dict.Add("23", new Dictionary<string, object>()
 		{
-			{ "Price", 26000 },
-			{ "Speed", 78 },
-			{ "Acceleration", 99 },
+			{ "Price", 2000000 },
+			{ "Speed", 100 },
+			{ "Acceleration", 120 },
 			{ "Handling", 35 }
 		});
-
 
 		//Set initial main car color
 		setCarColors();
@@ -331,7 +330,7 @@ public class ChangeCar : MonoBehaviour {
 		/*
 		Speed 70-100
 		Acceleration 90-120
-		Handling 30-45
+		Handling 20-35
 		*/
 
 		// Retrieving values
@@ -352,6 +351,7 @@ public class ChangeCar : MonoBehaviour {
 
 			//Disable dust, make car bouncy and turn off trigger collider
 			theCar[currentCar].transform.GetChild(2).gameObject.SetActive(false);
+			theCar[currentCar].transform.GetChild(3).gameObject.SetActive(false);
 			ChangeWheelColliders.changeWheelCollider(theCar[currentCar]);
 			theCar[selectedCar].GetComponent<Collider>().isTrigger = false;
 
@@ -364,11 +364,11 @@ public class ChangeCar : MonoBehaviour {
 				//((input - min) * 100) / (max - min)
 				speedLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Speed"].ToString()), 60, 100) / 100;
 				accelerationLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Acceleration"].ToString()), 80, 120) / 100;
-				handlingLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Handling"].ToString()), 28, 45) / 100;
+				handlingLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Handling"].ToString()), 18, 35) / 100;
 
 				speedUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Speed"].ToString()), 60, 100) / 100 + 0.03f;
 				accelerationUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Acceleration"].ToString()), 80, 120) / 100 + 0.03f;
-				handlingUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Handling"].ToString()), 28, 45) / 100 + 0.03f;
+				handlingUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Handling"].ToString()), 18, 35) / 100 + 0.03f;
 			} else {
 				//Get saved car stats
 				getCarStat(selectedCar, "speed");
@@ -548,6 +548,20 @@ public class ChangeCar : MonoBehaviour {
 		colorsParent.SetActive(false);
 	}
 
+	public void specificCar(int carChosen) {
+		carPriceGO.SetActive(false);
+		paintGO.SetActive(false);
+		paintSpecGO.SetActive(false);
+		paintSpecMoney.SetActive(false);
+		paintMoney.SetActive(false);
+		selectedCar = carChosen;
+		if(!GameDataController.getCars(selectedCar)) {
+			unownedCar();
+		} else {
+			ownedCar();
+		}
+		changeCar = true;
+	}
 	public void nextCar() {
 		if((selectedCar+1) <= dict.Count) {
 			carPriceGO.SetActive(false);
@@ -696,8 +710,8 @@ public class ChangeCar : MonoBehaviour {
 			accelerationLine.fillAmount = getPercentageOf(carStat, 80, 120) / 100;
 			accelerationUnderline.fillAmount = getPercentageOf(carStat, 80, 120) / 100 + 0.03f;
 		} else if(statType == "handling") {
-			handlingLine.fillAmount = getPercentageOf(carStat, 28, 45) / 100;
-			handlingUnderline.fillAmount = getPercentageOf(carStat, 28, 45) / 100 + 0.03f;
+			handlingLine.fillAmount = getPercentageOf(carStat, 18, 35) / 100;
+			handlingUnderline.fillAmount = getPercentageOf(carStat, 18, 35) / 100 + 0.03f;
 		}
 	}
 

@@ -188,7 +188,6 @@ public class Ghost : MonoBehaviour {
 		Stream stream = new MemoryStream(textAsset.bytes);
 		BinaryFormatter formatter = new BinaryFormatter();
 		//MyClass myInstance = formatter.Deserialize(stream) as MyClass;
-
 		demoReplayList = (List<GhostShot>)formatter.Deserialize(stream);
 		stream.Close();
 		////////////////////

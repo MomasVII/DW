@@ -40,6 +40,7 @@ public class brain : MonoBehaviour {
 
 	    demoCar = Instantiate(Resources.Load("Car"+Random.Range(1, 19), typeof(GameObject)), startPosition, transform.rotation) as GameObject;
         demoCar.gameObject.tag = "Demo";
+        demoCar.transform.GetChild(3).gameObject.SetActive(false);
 
         //Rotate car to start pos
         //demoCar.transform.Rotate(xAngle, yAngle, zAngle, Space.Self);

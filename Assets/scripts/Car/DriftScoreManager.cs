@@ -41,33 +41,35 @@ public class DriftScoreManager : MonoBehaviour {
 	}
 
 	public void updateScore(byte intensity) {
-		if (intensity > 100 && allowDrift && allowDriftReversed) {
-			driftScore++;
+		if(GameObject.FindGameObjectsWithTag("Demo").Length == 0) {
+			if (intensity > 100 && allowDrift && allowDriftReversed) {
+				driftScore++;
 
-			if(driftScore > 200 && driftScore < 300) { driftScoreText.color = new Color32(255, 138, 0, 255); }
-			else if(driftScore >= 300) { driftScoreText.color = new Color32(255, 0, 0, 255); }
+				if(driftScore > 200 && driftScore < 300) { driftScoreText.color = new Color32(255, 138, 0, 255); }
+				else if(driftScore >= 300) { driftScoreText.color = new Color32(255, 0, 0, 255); }
 
-			if(driftScoreText.fontSize < 70) {
-				driftScoreText.fontSize += increaseFont;
+				if(driftScoreText.fontSize < 70) {
+					driftScoreText.fontSize += increaseFont;
+				}
+				if(driftScore > 0) {
+					driftScoreText.gameObject.SetActive(true);
+					driftScoreText.text = "+"+driftScore;
+				}
+				if(increaseFont > 0.10) {
+					increaseFont -= 0.01f;
+				}
+
+			} else if (intensity < 100) {
+				totalDrift += driftScore;
+				totalDriftScoreText.text = "$"+totalDrift.ToString("n0");
+				driftScore = 0;
 			}
-			if(driftScore > 0) {
-				driftScoreText.gameObject.SetActive(true);
-				driftScoreText.text = "+"+driftScore;
-			}
-			if(increaseFont > 0.10) {
-				increaseFont -= 0.01f;
-			}
 
-		} else if (intensity < 100) {
-			totalDrift += driftScore;
-			totalDriftScoreText.text = "$"+totalDrift.ToString("n0");
-			driftScore = 0;
-		}
-
-		if (intensity < 25) {
-			driftScoreText.color = new Color32(255, 255, 255, 255);
-			driftScoreText.fontSize = 13;
-			driftScoreText.gameObject.SetActive(false);
+			if (intensity < 25) {
+				driftScoreText.color = new Color32(255, 255, 255, 255);
+				driftScoreText.fontSize = 13;
+				driftScoreText.gameObject.SetActive(false);
+			}
 		}
 
 	}
