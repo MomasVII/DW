@@ -324,6 +324,46 @@ public class ChangeCar : MonoBehaviour {
 			{ "Handling", 35 }
 		});
 
+		dict.Add("24", new Dictionary<string, object>()
+		{
+			{ "Price", 20000 },
+			{ "Speed", 100 },
+			{ "Acceleration", 120 },
+			{ "Handling", 35 }
+		});
+
+		dict.Add("25", new Dictionary<string, object>()
+		{
+			{ "Price", 20000 },
+			{ "Speed", 100 },
+			{ "Acceleration", 120 },
+			{ "Handling", 35 }
+		});
+
+		dict.Add("26", new Dictionary<string, object>()
+		{
+			{ "Price", 20000 },
+			{ "Speed", 100 },
+			{ "Acceleration", 120 },
+			{ "Handling", 35 }
+		});
+
+		dict.Add("27", new Dictionary<string, object>()
+		{
+			{ "Price", 20000 },
+			{ "Speed", 100 },
+			{ "Acceleration", 120 },
+			{ "Handling", 35 }
+		});
+
+		dict.Add("28", new Dictionary<string, object>()
+		{
+			{ "Price", 20000 },
+			{ "Speed", 100 },
+			{ "Acceleration", 120 },
+			{ "Handling", 35 }
+		});
+
 		//Set initial main car color
 		setCarColors();
 
