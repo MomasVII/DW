@@ -18,7 +18,7 @@
         echo "Error deleting record: " . mysqli_error($conn);
     }
 
-    $sql = "INSERT INTO Highscores (User, CarUsed, Score, Level) VALUES ('Reset User 1','2','99.999','Grass'), ('Reset User 2','3','98.999','Grass'), ('Reset User 3','4','97.999','Grass'), ('Reset User 1','2','99.999','Grass2'), ('Reset User 2','3','98.999','Grass2'), ('Reset User 3','4','97.999','Grass2'), ('Reset User 1','2','99.999','Lava2'), ('Reset User 2','3','98.999','Lava2'), ('Reset User 3','4','97.999','Lava2'), ('Reset User 1','2','99.999','Lava3'), ('Reset User 2','3','98.999','Lava3'), ('Reset User 3','4','97.999','Lava3'), ('Reset User 1','2','99.999','Snow'), ('Reset User 2','3','98.999','Snow'), ('Reset User 3','4','97.999','Snow')";
+    $sql = "INSERT INTO Highscores (User, CarUsed, Score, Level) VALUES ('Reset User 1','2','99.999','Grass'), ('Reset User 2','3','98.999','Grass'), ('Reset User 3','4','97.999','Grass'), ('Reset User 1','2','99.999','Grass2'), ('Reset User 2','3','98.999','Grass2'), ('Reset User 3','4','97.999','Grass2'), ('Reset User 1','2','99.999','Lava2'), ('Reset User 2','3','98.999','Lava2'), ('Reset User 3','4','97.999','Lava2'), ('Reset User 1','2','99.999','Lava3'), ('Reset User 2','3','98.999','Lava3'), ('Reset User 3','4','97.999','Lava3'), ('Reset User 1','2','99.999','Snow'), ('Reset User 2','3','98.999','Snow'), ('Reset User 3','4','97.999','Snow'), ('Reset User 1','4','97.999','Desert'), ('Reset User 2','4','97.999','Desert'), ('Reset User 3','4','97.999','Desert')";
 
     if (mysqli_query($conn, $sql)) {
        echo "New record created successfully";

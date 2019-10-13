@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/scenes/Lava3.unity
     guid: 5f4043bc8b7da3c4084da305b5e8ddde
   - enabled: 1
+    path: Assets/scenes/Desert.unity
+    guid: 88806d5e587a9d0428636e920489be52
+  - enabled: 1
     path: Assets/scenes/Grass3.unity
     guid: a23dc323fad118b45ab4ae2e18ea7b61
   m_configObjects: {}
