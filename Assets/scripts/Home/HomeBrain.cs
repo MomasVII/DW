@@ -35,12 +35,6 @@ public class HomeBrain : MonoBehaviour {
     		PlayerPrefs.DeleteKey("ghostCarUsed");
         }
 
-        if(PlayerPrefs.HasKey("QualitySetting")) {
-		    QualityScript.ChangeQuality(PlayerPrefs.GetInt("QualitySetting", 0));
-        } else {
-            QualityScript.ChangeQuality(4);
-        }
-        QualityScript.ChangeQuality(4);
         if(!PlayerPrefs.HasKey("playerCar")) {
             GameDataController.purchaseCar(1, 70, 90, 30);
             PlayerPrefs.SetInt("playerCar", 1);

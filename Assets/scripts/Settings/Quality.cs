@@ -7,28 +7,33 @@ public class Quality : MonoBehaviour {
 
     public GameObject[] mediumQualityObjects;
     public GameObject[] highQualityObjects;
-    int qualityLevel = 1;
+    public GameObject[] ultraQualityObjects;
 
     void Start() {
+
+        //QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("QualitySetting"), true);
         ChangeAdditionalQuality();
     }
 
     public void ChangeAdditionalQuality() {
 
         //Get the quality level from Unity as a number
-        qualityLevel = QualitySettings.GetQualityLevel();
+        int qualityLevel = QualitySettings.GetQualityLevel();
 
         //Low Quality
         if(qualityLevel == 1) {
 
-            foreach (GameObject mediumQualityObject in mediumQualityObjects)
-            {
+            foreach (GameObject mediumQualityObject in mediumQualityObjects) {
                 mediumQualityObject.SetActive(false);
             }
 
-            foreach (GameObject highQualityObject in highQualityObjects)
-            {
+            foreach (GameObject highQualityObject in highQualityObjects) {
                 highQualityObject.SetActive(false);
+            }
+
+            foreach (GameObject ultraQualityObject in ultraQualityObjects)
+            {
+                ultraQualityObject.SetActive(false);
             }
 
         //Medium Quality
@@ -44,19 +49,47 @@ public class Quality : MonoBehaviour {
                 highQualityObject.SetActive(false);
             }
 
+            foreach (GameObject ultraQualityObject in ultraQualityObjects)
+            {
+                ultraQualityObject.SetActive(false);
+            }
+
         //High Quality
-        } else if(qualityLevel == 4) {
+        } else if(qualityLevel == 3) {
 
-            foreach (GameObject mediumQualityObject in mediumQualityObjects)
-            {
-                mediumQualityObject.SetActive(true);
-            }
+                foreach (GameObject mediumQualityObject in mediumQualityObjects)
+                {
+                    mediumQualityObject.SetActive(true);
+                }
 
-            foreach (GameObject highQualityObject in highQualityObjects)
-            {
-                highQualityObject.SetActive(true);
+                foreach (GameObject highQualityObject in highQualityObjects)
+                {
+                    highQualityObject.SetActive(true);
+                }
+
+                foreach (GameObject ultraQualityObject in ultraQualityObjects)
+                {
+                    ultraQualityObject.SetActive(false);
+                }
+
+            //Ultra Quality
+            } else if(qualityLevel == 4) {
+
+                foreach (GameObject mediumQualityObject in mediumQualityObjects)
+                {
+                    mediumQualityObject.SetActive(true);
+                }
+
+                foreach (GameObject highQualityObject in highQualityObjects)
+                {
+                    highQualityObject.SetActive(true);
+                }
+
+                foreach (GameObject ultraQualityObject in ultraQualityObjects)
+                {
+                    ultraQualityObject.SetActive(true);
+                }
             }
-        }
     }
 
     // Use this for initialization
@@ -64,6 +97,7 @@ public class Quality : MonoBehaviour {
 
         //Set quality
         QualitySettings.SetQualityLevel(q, true);
+        Debug.Log(q);
 
         PlayerPrefs.SetInt("QualitySetting", q);
 

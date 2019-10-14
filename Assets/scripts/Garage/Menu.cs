@@ -9,8 +9,7 @@ public class Menu : MonoBehaviour
     public GameObject locationGO, PostProcessing, buttonGO, MenuGO, adGo;
     public TMP_Text locationText;
 
-    public Image ausFlag, usaFlag, DWLogo;
-    public Sprite ausSprite, usaSprite, ausGSSprite, usaGSSprite;
+    public Image DWLogo;
     public Button nextButton;
 
     public GameObject tapToContinue;
@@ -56,24 +55,9 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetInt("loadGarage", 0);
     }
 
-    public void setLocation(string myMetric) {
-        PlayerPrefs.SetString("metrics", myMetric);
-        nextButton.interactable = true;
-        if(myMetric == "kph"){
-            ausFlag.sprite = ausSprite;
-            usaFlag.sprite = usaGSSprite;
-        } else if(myMetric == "mph"){
-            usaFlag.sprite = usaSprite;
-            ausFlag.sprite = ausGSSprite;
-        }
-
-    }
-
     public void startGame() {
         DWLogo.CrossFadeAlpha(0, 1.0f, false);
         locationText.CrossFadeAlpha(0, 1.0f, false);
-        ausFlag.CrossFadeAlpha(0, 1.0f, false);
-        usaFlag.CrossFadeAlpha(0, 1.0f, false);
         PostProcessing.SetActive(false);
         buttonGO.SetActive(false);
 
