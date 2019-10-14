@@ -121,6 +121,7 @@ public class ChangeCar : MonoBehaviour {
 			selectedCar = 23;
 			carSet = false;
 		}
+		sprayedCar = selectedCar;
 
 		theCar = new GameObject[40];
 

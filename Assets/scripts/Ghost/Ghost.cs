@@ -479,8 +479,14 @@ public class Ghost : MonoBehaviour {
 
 		//POST the file to DB
         WWW w = new WWW("https://www.undivided.games/DriftWorlds/UploadGhost.php", form);
+		downloadingPanel.SetActive(true);
+		while (!w.isDone) {
+			DownloadingText.text = "Uploading Ghost: " + (w.progress*100).ToString("F3") + "%...";
+            yield return null;
+        }
+		downloadingPanel.SetActive(false);
 
-        yield return w;
+        //yield return w;
 
         if (w.error != null)
         {
