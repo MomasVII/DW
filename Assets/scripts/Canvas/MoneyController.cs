@@ -38,9 +38,9 @@ public class MoneyController : MonoBehaviour {
 		if(Time.time >= nextUpdate && isNet){
 			// Change the next update (current second+1)
 			nextUpdate=Mathf.FloorToInt(Time.time)+1;
-			storePlayerCash += 5;
-			incrementalMoney += 5;
-			if(incrementalMoney < 2000) {
+			storePlayerCash += 5000;
+			incrementalMoney += 5000;
+			if(incrementalMoney < 200000) {
 				updatePlayerMoney();
 				saveMoney();
 			}

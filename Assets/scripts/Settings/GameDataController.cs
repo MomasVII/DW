@@ -38,6 +38,8 @@ public class GameDataController : MonoBehaviour
 
 	public static string getCarsColor(int carColour)
 	{
+		if (saveData.CarList == null) return "none";
+
 		foreach (var sd in saveData.CarList) {
 			if(sd.carId == carColour) { //Find car we are referring to
 				if(sd.currentColor != null) { //Check we have set a color
@@ -49,6 +51,8 @@ public class GameDataController : MonoBehaviour
 	}
 	public static string getCarsSpecColor(int carColour)
 	{
+		if (saveData.CarList == null) return "none";
+
 		foreach (var sd in saveData.CarList) {
 			if(sd.carId == carColour) { //Find car we are referring to
 				if(sd.currentSpecColor != null) { //Check we have set a color
@@ -96,6 +100,7 @@ public class GameDataController : MonoBehaviour
 		saveData.CarList.Add(carListData);
 		SaveGame();
 	}
+
 
 	public static void purchaseColor(string myCarColor, int selectedCar, string colorType) {
 		if (saveData.CarList == null)
