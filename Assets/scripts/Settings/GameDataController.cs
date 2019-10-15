@@ -36,6 +36,29 @@ public class GameDataController : MonoBehaviour
 		purchaseCar(1, 70, 30, 30);
 	}
 
+	public static string getCarsColor(int carColour)
+	{
+		foreach (var sd in saveData.CarList) {
+			if(sd.carId == carColour) { //Find car we are referring to
+				if(sd.currentColor != null) { //Check we have set a color
+					return sd.currentColor;
+				}
+			}
+		}
+		return "none";
+	}
+	public static string getCarsSpecColor(int carColour)
+	{
+		foreach (var sd in saveData.CarList) {
+			if(sd.carId == carColour) { //Find car we are referring to
+				if(sd.currentSpecColor != null) { //Check we have set a color
+					return sd.currentSpecColor;
+				}
+			}
+		}
+		return "none";
+	}
+
 	public static bool getCars(int currentCarId)
 	{
 		if (saveData.CarList == null)
@@ -49,7 +72,6 @@ public class GameDataController : MonoBehaviour
 
 	public static bool getColor(int currentCarId, string currentColor)
 	{
-
 		if (saveData.CarList == null)
 			return false;
 
@@ -62,7 +84,6 @@ public class GameDataController : MonoBehaviour
 				}
 			}
 		}
-
 		return false;
 	}
 
@@ -76,7 +97,7 @@ public class GameDataController : MonoBehaviour
 		SaveGame();
 	}
 
-	public static void purchaseColor(string myCarColor, int selectedCar) {
+	public static void purchaseColor(string myCarColor, int selectedCar, string colorType) {
 		if (saveData.CarList == null)
 			saveData.CarList = new List<CarListData>();
 
@@ -85,6 +106,11 @@ public class GameDataController : MonoBehaviour
 				if(sd.carColors != null) {
 					if(!sd.carColors.Contains(myCarColor)) {
 						sd.carColors.Add(myCarColor);
+					}
+					if(colorType == "Spec") {
+						sd.currentSpecColor = myCarColor;
+					} else {
+						sd.currentColor = myCarColor;
 					}
 				}
 			}

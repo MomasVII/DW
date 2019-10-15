@@ -12,8 +12,8 @@ public class CarListData
 {
 	public int carId;
 	public List<string> carColors;
-	public int currentColor;
-	public int currentSpecColor;
+	public string currentColor;
+	public string currentSpecColor;
 	public int speed;
 	public int acceleration;
 	public int handling;

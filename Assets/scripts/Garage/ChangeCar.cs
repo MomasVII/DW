@@ -385,6 +385,8 @@ public class ChangeCar : MonoBehaviour {
 	}
 
 	void Update() {
+		Debug.Log("Color: " + GameDataController.getCarsColor(selectedCar) + " " + PlayerPrefs.GetString("Car"+selectedCar+"Colour"));
+		Debug.Log("SpecColor: " + GameDataController.getCarsSpecColor(selectedCar) + " " + PlayerPrefs.GetString("Car"+selectedCar+"SpecColour"));
 		if(changeCar) {
 			Destroy(theCar[currentCar]);
 			currentCar = selectedCar;
@@ -535,15 +537,16 @@ public class ChangeCar : MonoBehaviour {
 
 	public void purchaseTheColor(string colorType) {
 		cashSource.PlayOneShot(cashSource.clip, 0.50f); //Cash audio
-		GameDataController.purchaseColor(globalColorName, selectedCar); //Buy color
 
 		if(colorType == "Spec") {
+			GameDataController.purchaseColor(globalColorName, selectedCar, "Spec"); //Buy color
 			PlayerPrefs.SetString("Car"+selectedCar+"SpecColour", selectedColor);
 			moneyController.updateDriftMoney(-500);
 			selectColorButton(globalColorName, myColorsSpec);
 			paintSpecMoney.SetActive(false);
 			paintSpecGO.SetActive(false);
 		} else if (colorType == "Stock") {
+			GameDataController.purchaseColor(globalColorName, selectedCar, "Stock"); //Buy color
 			moneyController.updateDriftMoney(-250);
 			PlayerPrefs.SetString("Car"+selectedCar+"Colour", selectedColor);
 			selectColorButton(globalColorName, myColors);
@@ -637,11 +640,22 @@ public class ChangeCar : MonoBehaviour {
 	}
 	public void selectCar() {
 
-		engineStartSource.PlayOneShot(engineStartSource.clip, 1.0f);
-		if(selectedCar != sprayedCar) {
+		string lastColourCheck =  GameDataController.getCarsColor(selectedCar);
+		string lastSpecColourCheck =  GameDataController.getCarsSpecColor(selectedCar);
+		Debug.Log(lastColourCheck);
+		Debug.Log(lastSpecColourCheck);
+		if(lastColourCheck != "none") {
+			PlayerPrefs.SetString("Car"+selectedCar+"Colour", GameDataController.getCarsColor(selectedCar));
+		} else {
 			PlayerPrefs.DeleteKey("Car"+selectedCar+"Colour");
+		}
+		if(lastSpecColourCheck != "none") {
+			PlayerPrefs.SetString("Car"+selectedCar+"SpecColour", GameDataController.getCarsSpecColor(selectedCar));
+		} else {
 			PlayerPrefs.DeleteKey("Car"+selectedCar+"SpecColour");
 		}
+
+		engineStartSource.PlayOneShot(engineStartSource.clip, 1.0f);
 		PlayerPrefs.SetInt("playerCar", selectedCar);
 		PlayerPrefs.SetInt("Speed", GameDataController.getCarStats(selectedCar, "speed"));
 		PlayerPrefs.SetInt("Acceleration", GameDataController.getCarStats(selectedCar, "acceleration"));
@@ -727,7 +741,7 @@ public class ChangeCar : MonoBehaviour {
 	}
 
 	public int getTotalStars() {
-		string[] levels = new string[6] {"Grass", "Grass2", "Grass3", "Lava2", "Lava3", "Snow"};
+		string[] levels = new string[7] {"Grass", "Grass2", "Grass3", "Lava2", "Lava3", "Snow", "Desert"};
 		int totalStars = 0;
 		foreach (string level in levels) {
 			if(PlayerPrefs.HasKey(level+"-Stars")) {
