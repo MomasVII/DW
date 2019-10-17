@@ -41,12 +41,6 @@
         echo "L not set";
     }
 
-    /*if(isset($_POST["rank"])) {
-        $myRank = $_POST["rank"];
-    } else {
-        echo "R not set";
-    }*/
-
     $insert_data = array(
         'User' => $name,
         'CarUsed' => $carused,

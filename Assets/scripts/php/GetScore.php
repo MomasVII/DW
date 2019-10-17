@@ -23,13 +23,6 @@
         echo "Level not set";
     }
 
-    /*$rank = '';
-    if(isset($_GET["rank"])) {
-        $rank = $_GET["rank"];
-    } else {
-        echo "Level not set";
-    }*/
-
     //instantiate mysqli_db and connect to database
     require_once('mysqli_db.php');
     $mysqli_db = new mysqli_db($port = null); //can also specify port if needed

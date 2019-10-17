@@ -172,13 +172,8 @@ public class Ghost : MonoBehaviour {
 
 	public GameObject newRecord;
 
-	//int rank;
-
     // Use this for initialization
     void Start () {
-
-		//Get rank for ghost information
-		//rank = PlayerPrefs.GetInt("Rank");
 
 		scene = SceneManager.GetActiveScene(); //Get scene name
 
@@ -507,7 +502,6 @@ public class Ghost : MonoBehaviour {
 		form.AddField("scorePost", personalHighscore.ToString());
 		form.AddField("carusedPost", playerCar.ToString());
 		form.AddField("level", scene.name);
-		//form.AddField("rank", rank);
 		WWW www = new WWW("https://www.undivided.games/DriftWorlds/SaveScore.php", form);
 		yield return www;
 

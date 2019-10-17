@@ -177,7 +177,7 @@ public class HomeColliders : MonoBehaviour {
 
         ErrorText.text += "\nDownloading World Record Ghost";
 
-        WWW wwwHighscores = new WWW("https://www.undivided.games/DriftWorlds/GetScore.php?level="+sceneName+"&rank="+PlayerPrefs.GetInt("Rank"));
+        WWW wwwHighscores = new WWW("https://www.undivided.games/DriftWorlds/GetScore.php?level="+sceneName);
         while (!wwwHighscores.isDone) {
             yield return null;
         }

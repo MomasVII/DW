@@ -43,7 +43,6 @@ public class ChangeCar : MonoBehaviour {
 
 	//Car Color
 	Color newColor;
-	private int sprayedCar;
 
 	//Check if this is first time in the garage
 	private bool carSet = true;
@@ -121,7 +120,6 @@ public class ChangeCar : MonoBehaviour {
 			selectedCar = 23;
 			carSet = false;
 		}
-		sprayedCar = selectedCar;
 
 		theCar = new GameObject[40];
 
@@ -459,7 +457,6 @@ public class ChangeCar : MonoBehaviour {
 		string stats = results.Value;
 
 		selectedColor = stats; //variable we send to savedata to assign to our car
-		sprayedCar = selectedCar; //If they change car we won't want to spray using an old car color
 
 		//If car is owned and color has not been purchased show buy screen
 		if(!BuyGO.active && !GameDataController.getColor(selectedCar, colorName)) {
@@ -503,7 +500,6 @@ public class ChangeCar : MonoBehaviour {
 		string stats = results.Value;
 
 		selectedColor = stats; //variable we send to savedata to assign to our car
-		sprayedCar = selectedCar; //If they change car we won't want to spray using an old car color
 
 		//If car is owned and color has not been purchased show buy screen
 		if(!BuyGO.active && !GameDataController.getColor(selectedCar, colorName)) {

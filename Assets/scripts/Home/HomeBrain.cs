@@ -18,10 +18,6 @@ public class HomeBrain : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 
-        int rank = (PlayerPrefs.GetInt("Speed") + PlayerPrefs.GetInt("Acceleration")) - 160;
-        rank = 0;
-        PlayerPrefs.SetInt("Rank", rank);
-
         shaderCollection.WarmUp();
 
         if(!PlayerPrefs.HasKey("personalOrGhost")) {
