@@ -75,6 +75,11 @@ public class ChangeCar : MonoBehaviour {
 	//Update player cash
 	private MoneyController moneyController;
 
+	//Car stats limits
+	private int handlingMin = 15, handlingMax = 25;
+	private int speedMin = 60, speedMax = 100;
+	private int accellerationMin = 80, accellerationMax = 120;
+
 	// Use this for initialization
 	void Start () {
 
@@ -145,7 +150,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 15400 },
 			{ "Speed", 70 },
 			{ "Acceleration", 90 },
-			{ "Handling", 20 }
+			{ "Handling", 17 }
 		});
 
 		dict.Add("2", new Dictionary<string, object>()
@@ -153,7 +158,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 17990 },
 			{ "Speed", 70 },
 			{ "Acceleration", 92 },
-			{ "Handling", 21 }
+			{ "Handling", 18 }
 		});
 
 		dict.Add("3", new Dictionary<string, object>()
@@ -161,7 +166,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 25880 },
 			{ "Speed", 73 },
 			{ "Acceleration", 94 },
-			{ "Handling", 24 }
+			{ "Handling", 19 }
 		});
 
 		dict.Add("4", new Dictionary<string, object>()
@@ -169,7 +174,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 26000 },
 			{ "Speed", 78 },
 			{ "Acceleration", 99 },
-			{ "Handling", 25 }
+			{ "Handling", 21 }
 		});
 
 		dict.Add("5", new Dictionary<string, object>()
@@ -177,14 +182,14 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 35670 },
 			{ "Speed", 76 },
 			{ "Acceleration", 97 },
-			{ "Handling", 28 }
+			{ "Handling", 22 }
 		});
 		dict.Add("6", new Dictionary<string, object>()
 		{
 			{ "Price", 42000 },
 			{ "Speed", 84 },
 			{ "Acceleration", 100 },
-			{ "Handling", 28 }
+			{ "Handling", 22 }
 		});
 
 		dict.Add("7", new Dictionary<string, object>()
@@ -192,7 +197,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 46590 },
 			{ "Speed", 82 },
 			{ "Acceleration", 95 },
-			{ "Handling", 26 }
+			{ "Handling", 21 }
 		});
 
 		dict.Add("8", new Dictionary<string, object>()
@@ -200,7 +205,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 48099 },
 			{ "Speed", 85 },
 			{ "Acceleration", 100 },
-			{ "Handling", 20 }
+			{ "Handling", 19 }
 		});
 
 		dict.Add("9", new Dictionary<string, object>()
@@ -208,7 +213,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 52590 },
 			{ "Speed", 79 },
 			{ "Acceleration", 100 },
-			{ "Handling", 26 }
+			{ "Handling", 23 }
 		});
 
 		dict.Add("10", new Dictionary<string, object>()
@@ -216,7 +221,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 59670 },
 			{ "Speed", 84 },
 			{ "Acceleration",98 },
-			{ "Handling", 29 }
+			{ "Handling", 23 }
 		});
 
 		dict.Add("11", new Dictionary<string, object>()
@@ -224,7 +229,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 64909 },
 			{ "Speed", 77 },
 			{ "Acceleration", 103 },
-			{ "Handling", 28 }
+			{ "Handling", 24 }
 		});
 
 		dict.Add("12", new Dictionary<string, object>()
@@ -232,7 +237,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 70900 },
 			{ "Speed", 79 },
 			{ "Acceleration", 99 },
-			{ "Handling", 27 }
+			{ "Handling", 24 }
 		});
 
 		dict.Add("13", new Dictionary<string, object>()
@@ -240,7 +245,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 75650 },
 			{ "Speed", 80 },
 			{ "Acceleration", 112 },
-			{ "Handling", 30 }
+			{ "Handling", 25 }
 		});
 
 		dict.Add("14", new Dictionary<string, object>()
@@ -248,7 +253,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 80000 },
 			{ "Speed", 85 },
 			{ "Acceleration", 106 },
-			{ "Handling", 28 }
+			{ "Handling", 25 }
 		});
 
 		dict.Add("15", new Dictionary<string, object>()
@@ -256,7 +261,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 88600 },
 			{ "Speed", 94 },
 			{ "Acceleration", 112 },
-			{ "Handling", 26 }
+			{ "Handling", 23 }
 		});
 
 		dict.Add("16", new Dictionary<string, object>()
@@ -264,7 +269,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 100000 },
 			{ "Speed", 95 },
 			{ "Acceleration", 108 },
-			{ "Handling", 30 }
+			{ "Handling", 25 }
 		});
 
 		dict.Add("17", new Dictionary<string, object>()
@@ -272,7 +277,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 120000 },
 			{ "Speed", 93 },
 			{ "Acceleration", 104 },
-			{ "Handling", 30 }
+			{ "Handling", 25 }
 		});
 
 		dict.Add("18", new Dictionary<string, object>()
@@ -280,7 +285,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 154670 },
 			{ "Speed", 93 },
 			{ "Acceleration", 115 },
-			{ "Handling", 35 }
+			{ "Handling", 22 }
 		});
 
 		dict.Add("19", new Dictionary<string, object>()
@@ -288,7 +293,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 459850 },
 			{ "Speed", 93 },
 			{ "Acceleration", 112 },
-			{ "Handling", 34 }
+			{ "Handling", 23 }
 		});
 
 		dict.Add("20", new Dictionary<string, object>()
@@ -296,7 +301,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 1000000 },
 			{ "Speed", 90 },
 			{ "Acceleration", 114 },
-			{ "Handling", 31 }
+			{ "Handling", 24 }
 		});
 
 		dict.Add("21", new Dictionary<string, object>()
@@ -304,7 +309,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 1200500 },
 			{ "Speed", 92 },
 			{ "Acceleration", 110 },
-			{ "Handling", 25 }
+			{ "Handling", 21 }
 		});
 
 		dict.Add("22", new Dictionary<string, object>()
@@ -312,7 +317,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 1500000 },
 			{ "Speed", 95 },
 			{ "Acceleration", 116 },
-			{ "Handling", 35 }
+			{ "Handling", 25 }
 		});
 
 		dict.Add("23", new Dictionary<string, object>()
@@ -320,7 +325,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 2000000 },
 			{ "Speed", 100 },
 			{ "Acceleration", 120 },
-			{ "Handling", 35 }
+			{ "Handling", 25 }
 		});
 
 		dict.Add("24", new Dictionary<string, object>()
@@ -328,7 +333,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 20000 },
 			{ "Speed", 100 },
 			{ "Acceleration", 120 },
-			{ "Handling", 35 }
+			{ "Handling", 25 }
 		});
 
 		dict.Add("25", new Dictionary<string, object>()
@@ -336,7 +341,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 20000 },
 			{ "Speed", 100 },
 			{ "Acceleration", 120 },
-			{ "Handling", 35 }
+			{ "Handling", 24 }
 		});
 
 		dict.Add("26", new Dictionary<string, object>()
@@ -344,7 +349,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 20000 },
 			{ "Speed", 100 },
 			{ "Acceleration", 120 },
-			{ "Handling", 35 }
+			{ "Handling", 25 }
 		});
 
 		dict.Add("27", new Dictionary<string, object>()
@@ -352,7 +357,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 20000 },
 			{ "Speed", 100 },
 			{ "Acceleration", 120 },
-			{ "Handling", 35 }
+			{ "Handling", 24 }
 		});
 
 		dict.Add("28", new Dictionary<string, object>()
@@ -360,7 +365,7 @@ public class ChangeCar : MonoBehaviour {
 			{ "Price", 20000 },
 			{ "Speed", 100 },
 			{ "Acceleration", 120 },
-			{ "Handling", 35 }
+			{ "Handling", 24 }
 		});
 
 		//Set initial main car color
@@ -404,13 +409,13 @@ public class ChangeCar : MonoBehaviour {
 			if(!GameDataController.getCars(selectedCar)) {
 				//Get values for stats
 				//((input - min) * 100) / (max - min)
-				speedLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Speed"].ToString()), 60, 100) / 100;
-				accelerationLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Acceleration"].ToString()), 80, 120) / 100;
-				handlingLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Handling"].ToString()), 18, 35) / 100;
+				speedLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Speed"].ToString()), speedMin, speedMax) / 100;
+				accelerationLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Acceleration"].ToString()), accellerationMin, accellerationMax) / 100;
+				handlingLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Handling"].ToString()), handlingMin, handlingMax) / 100;
 
-				speedUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Speed"].ToString()), 60, 100) / 100 + 0.03f;
-				accelerationUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Acceleration"].ToString()), 80, 120) / 100 + 0.03f;
-				handlingUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Handling"].ToString()), 18, 35) / 100 + 0.03f;
+				speedUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Speed"].ToString()), speedMin, speedMax) / 100 + 0.03f;
+				accelerationUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Acceleration"].ToString()), accellerationMin, accellerationMax) / 100 + 0.03f;
+				handlingUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Handling"].ToString()), handlingMin, handlingMax) / 100 + 0.03f;
 			} else {
 				//Get saved car stats
 				getCarStat(selectedCar, "speed");
@@ -741,15 +746,15 @@ public class ChangeCar : MonoBehaviour {
 		int carStat = GameDataController.getCarStats(carId, statType);
 		if(statType == "speed") {
 			//((input - min) * 100) / (max - min)
-			speedLine.fillAmount = getPercentageOf(carStat, 60, 100) / 100;
-			speedUnderline.fillAmount = getPercentageOf(carStat, 60, 100) / 100 + 0.03f;
+			speedLine.fillAmount = getPercentageOf(carStat, speedMin, speedMax) / 100;
+			speedUnderline.fillAmount = getPercentageOf(carStat, speedMin, speedMax) / 100 + 0.03f;
 
 		} else if(statType == "acceleration") {
-			accelerationLine.fillAmount = getPercentageOf(carStat, 80, 120) / 100;
-			accelerationUnderline.fillAmount = getPercentageOf(carStat, 80, 120) / 100 + 0.03f;
+			accelerationLine.fillAmount = getPercentageOf(carStat, accellerationMin, accellerationMax) / 100;
+			accelerationUnderline.fillAmount = getPercentageOf(carStat, accellerationMin, accellerationMax) / 100 + 0.03f;
 		} else if(statType == "handling") {
-			handlingLine.fillAmount = getPercentageOf(carStat, 18, 35) / 100;
-			handlingUnderline.fillAmount = getPercentageOf(carStat, 18, 35) / 100 + 0.03f;
+			handlingLine.fillAmount = getPercentageOf(carStat, handlingMin, handlingMax) / 100;
+			handlingUnderline.fillAmount = getPercentageOf(carStat, handlingMin, handlingMax) / 100 + 0.03f;
 		}
 	}
 

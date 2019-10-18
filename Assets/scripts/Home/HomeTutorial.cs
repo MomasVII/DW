@@ -65,7 +65,7 @@ public class HomeTutorial : MonoBehaviour {
 				typing = true;
 				resetButton.SetActive(true);
 				lightsButton.SetActive(true);
-				StartCoroutine(ShowText("You can reset to your starting position with the button to your left and you can upright your car but tapping the center of the screen."));
+				StartCoroutine(ShowText("You can reset to your starting position with the button to your left and you can upright your car by tapping the center of the screen."));
 			} else if(!typing && speechIndex == 5 && startTyping) {
 				startTyping = false;
 				typing = true;
