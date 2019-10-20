@@ -34,6 +34,10 @@ public class CameraController : MonoBehaviour
 	public float cameraSmoothTime = 0.1f;
 	public float maxCameraOffsetVelocity = 4f;
 
+	private Vector3 touchStart;
+	public float zoomOutMin = 1;
+	public float zoomOutMax = 8;
+
 	public void Start() {
 		car = GameObject.FindWithTag(tagString);
 		transform.position = new Vector3(car.transform.position.x-posX+carPos, car.transform.position.y+posY, car.transform.position.z-posZ);
@@ -75,7 +79,7 @@ public class CameraController : MonoBehaviour
 			/*transform.position = new Vector3(car.transform.position.x-posX+carPos, car.transform.position.y+posY, car.transform.position.z-posZ) + car.transform.forward * (Mathf.Clamp(speed, 0, 0.70f)*30);
 			orthCamera.orthographicSize = orthS+(Mathf.Clamp(speed, 0, 0.70f)*30);*/
 
-			if(tagString != "Demo") {
+			if(tagString == "Player") {
 				Vector3 camSpeedOffsetTarget = car.transform.forward * (Mathf.Clamp(speed, 0, 0.70f)*20);
 				camSpeedOffset = Vector3.SmoothDamp(camSpeedOffset, camSpeedOffsetTarget,
 	        	ref camVelocity, cameraSmoothTime, maxCameraOffsetVelocity);
@@ -85,11 +89,38 @@ public class CameraController : MonoBehaviour
 			        car.transform.position.y+posY,
 			        car.transform.position.z-posZ)
 			      + camSpeedOffset;
-			} else {
+
+				 orthCamera.orthographicSize = 20.0f+(Mathf.Clamp(speed, 0, 0.70f)*20);
+			} else if(tagString == "Demo") {
 				transform.position = new Vector3(car.transform.position.x-5f+carPos, car.transform.position.y+6.0f, car.transform.position.z-5);
 				orthCamera.orthographicSize = 20.0f+(Mathf.Clamp(speed, 0, 0.70f)*10);
 				transition = false;
 				transform.LookAt(car.transform);
+			}  else if(tagString == "Top") {
+				Debug.Log("TOP");
+				if(Input.GetMouseButtonDown(0)) {
+					touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+				}
+				if(Input.touchCount == 2) {
+					Touch touchZero = Input.GetTouch(0);
+					Touch touchOne = Input.GetTouch(1);
+
+					Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+					Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+					float prevMagnitude = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+					float currentMagnitude = (touchZero.position - touchOne.position).magnitude;
+
+					float difference = currentMagnitude - prevMagnitude;
+
+					zoom(difference * 0.01f);
+				} else if(Input.GetMouseButton(0)) {
+					Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+					Camera.main.transform.position += direction;
+				}
+
+				zoom(Input.GetAxis("Mouse ScrollWheel"));
+
 			}
 
 
@@ -109,11 +140,22 @@ public class CameraController : MonoBehaviour
 				transition = false;
 			}*/
 		}
+	}
 
+	void zoom(float increment) {
+		Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - increment, zoomOutMin, zoomOutMax);
 	}
 
 	public void FinishedCamera(bool isFinished) {
 		finished = isFinished;
+	}
+
+	public void DetachCamera() {
+		if(tagString == "Top") {
+			tagString = "Player";
+		} else {
+			tagString = "Top";
+		}
 	}
 
 	public void ChangeCamera() {
