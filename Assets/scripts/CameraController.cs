@@ -70,7 +70,7 @@ public class CameraController : MonoBehaviour
 
 	void Update ()
 	{
-		carPos = car.transform.forward.x * 15;
+		carPos = car.transform.forward.x * 125;
 		if(tagString != "Demo") {
 			carPos = 0; // Remove for moving camera
 		}
@@ -97,7 +97,6 @@ public class CameraController : MonoBehaviour
 				transition = false;
 				transform.LookAt(car.transform);
 			}  else if(tagString == "Top") {
-				Debug.Log("TOP");
 				if(Input.GetMouseButtonDown(0)) {
 					touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				}
@@ -113,7 +112,7 @@ public class CameraController : MonoBehaviour
 
 					float difference = currentMagnitude - prevMagnitude;
 
-					zoom(difference * 0.01f);
+					zoom(difference * 0.10f);
 				} else if(Input.GetMouseButton(0)) {
 					Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
 					Camera.main.transform.position += direction;

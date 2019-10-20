@@ -17,7 +17,7 @@ public class GarageTutorial : MonoBehaviour {
 	public TMP_Text mainInputField, errorText;
 
 	//Speech variables
-	private float delay = 0.01f; //0.04
+	private float delay = 0.005f; //0.04
 	private string currentText = "";
 	public TMP_Text characterSpeech;
 
@@ -36,6 +36,8 @@ public class GarageTutorial : MonoBehaviour {
 	bool startTutorial = false;
 
 	public void StartTutorial () {
+		PlayerPrefs.SetString("NoAds", "NoAds");
+
 		changecar = transform.GetComponent<ChangeCar>();
 		anim = character.GetComponent<Animator>();
 		speechPanel.SetActive(true);

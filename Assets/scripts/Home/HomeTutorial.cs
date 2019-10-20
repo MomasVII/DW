@@ -17,7 +17,7 @@ public class HomeTutorial : MonoBehaviour {
 	public Camera mainCamera, levelCamera;
 
 	//Speech variables
-	private float delay = 0.01f; //0.04
+	private float delay = 0.005f; //0.04
 	private string currentText = "";
 	public TMP_Text characterSpeech;
 
@@ -64,8 +64,8 @@ public class HomeTutorial : MonoBehaviour {
 				startTyping = false;
 				typing = true;
 				resetButton.SetActive(true);
-				lightsButton.SetActive(true);
-				StartCoroutine(ShowText("You can reset to your starting position with the button to your left and you can upright your car by tapping the center of the screen."));
+				//lightsButton.SetActive(true);
+				StartCoroutine(ShowText("The buttons on your left will allow you to reset your car to the beginning and zoom and pan around the level. You can tap the middle of the screen to upright your car should you even end upside down. "));
 			} else if(!typing && speechIndex == 5 && startTyping) {
 				startTyping = false;
 				typing = true;
