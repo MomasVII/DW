@@ -611,6 +611,7 @@ public class ChangeCar : MonoBehaviour {
 		changeCar = true;
 	}
 	public void nextCar() {
+		hideConfirm();
 		if((selectedCar+1) <= dict.Count) {
 			carPriceGO.SetActive(false);
 			paintGO.SetActive(false);
@@ -627,6 +628,7 @@ public class ChangeCar : MonoBehaviour {
 		}
 	}
 	public void previousCar() {
+		hideConfirm();
 		if((selectedCar-1) >= 1) {
 			carPriceGO.SetActive(false);
 			paintGO.SetActive(false);
@@ -698,19 +700,24 @@ public class ChangeCar : MonoBehaviour {
 
 	public void showConfirm(string stat) {
 		//show confirm screen
-		if(getTotalStars() > PlayerPrefs.GetInt("Spent")) {
-			speedLine.enabled = true;
-			accelerationLine.enabled = true;
-			handlingLine.enabled = true;
-			if(stat == "speed") {
-				speedLine.enabled = false;
-			} else if(stat == "acceleration") {
-				accelerationLine.enabled = false;
-			} else if(stat == "handling") {
-				handlingLine.enabled = false;
+		if(getTotalStars() > PlayerPrefs.GetInt("Spent")) { //If we haven't spent all of our stars
+			if(GameDataController.getCars(selectedCar)) { //Chefk we own the car
+				speedLine.enabled = true;
+				accelerationLine.enabled = true;
+				handlingLine.enabled = true;
+				confirmDialog.SetActive(false);
+				if(stat == "speed" && speedLine.fillAmount < 1) {
+					speedLine.enabled = false;
+					confirmDialog.SetActive(true);
+				} else if(stat == "acceleration" && accelerationLine.fillAmount < 1) {
+					accelerationLine.enabled = false;
+					confirmDialog.SetActive(true);
+				} else if(stat == "handling" && handlingLine.fillAmount < 1) {
+					handlingLine.enabled = false;
+					confirmDialog.SetActive(true);
+				}
+				statChose = stat;
 			}
-			confirmDialog.SetActive(true);
-			statChose = stat;
 		}
 	}
 

@@ -15,6 +15,8 @@ public class Nos : MonoBehaviour {
     private int startForce = 10;
     private float fillPercent = 1f;
 
+    WheelCollider rearLeft, rearRight;
+
     //Count seconds;
     private int nextUpdate = 1;
 
@@ -27,11 +29,15 @@ public class Nos : MonoBehaviour {
         wildfireRight = car.transform.GetChild(3).transform.GetChild(1).GetComponent<ParticleSystem>();
         wildfireLeft.Stop();
         wildfireRight.Stop();
+
+        rearLeft = car.transform.Find("wheels/RearLeft").GetComponent<WheelCollider>();
+		rearRight = car.transform.Find("wheels/RearRight").GetComponent<WheelCollider>();
+
     }
 
     // Update is called once per frame
     void FixedUpdate() {
-        if(nosing && fillPercent > 0.1f) {
+        if(nosing && fillPercent > 0.1f && (rearRight.isGrounded || rearLeft.isGrounded)) {
             car.GetComponent<Rigidbody>().AddForce(car.transform.forward * startForce, ForceMode.Acceleration);
             startForce++;
             if(startForce > maxForce) { startForce = maxForce; }

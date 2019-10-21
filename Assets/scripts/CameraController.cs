@@ -38,6 +38,9 @@ public class CameraController : MonoBehaviour
 	public float zoomOutMin = 1;
 	public float zoomOutMax = 8;
 
+	//Hide these on panning
+	public GameObject reset, controls, money;
+
 	public void Start() {
 		car = GameObject.FindWithTag(tagString);
 		transform.position = new Vector3(car.transform.position.x-posX+carPos, car.transform.position.y+posY, car.transform.position.z-posZ);
@@ -152,8 +155,14 @@ public class CameraController : MonoBehaviour
 	public void DetachCamera() {
 		if(tagString == "Top") {
 			tagString = "Player";
+			controls.SetActive(true);
+			reset.SetActive(true);
+			money.SetActive(true);
 		} else {
 			tagString = "Top";
+			controls.SetActive(false);
+			reset.SetActive(false);
+			money.SetActive(false);
 		}
 	}
 
