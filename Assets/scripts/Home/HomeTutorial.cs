@@ -7,14 +7,14 @@ using TMPro;
 
 public class HomeTutorial : MonoBehaviour {
 
-	public GameObject lightsButton, resetButton;
+	public GameObject lightsButton, resetButton, panButton;
 
 	public GameObject controls, speedo, nextButton;
 
 	//Speech Panel
 	public GameObject speechPanel;
 
-	public Camera mainCamera, levelCamera;
+	public Camera mainCamera, levelCamera, showOffCamera;
 
 	//Speech variables
 	private float delay = 0.005f; //0.04
@@ -31,11 +31,16 @@ public class HomeTutorial : MonoBehaviour {
 		if(!PlayerPrefs.HasKey("homeTutorial")) { //Check if playerpref car has been created
 			speechPanel.SetActive(true);
 
+			panButton.SetActive(false);
 			lightsButton.SetActive(false);
 			resetButton.SetActive(false);
 			controls.SetActive(false);
 			speedo.SetActive(false);
 			nextButton.SetActive(true);
+
+			showOffCamera.enabled = true;
+			mainCamera.enabled = false;
+			levelCamera.enabled = false;
 		}
 
 	}
@@ -51,7 +56,7 @@ public class HomeTutorial : MonoBehaviour {
 			} else if(!typing && speechIndex == 2 && startTyping) {
 				startTyping = false;
 				typing = true;
-				mainCamera.enabled = false;
+				showOffCamera.enabled = false;
 				levelCamera.enabled = true;
 				StartCoroutine(ShowText("Each level has an access panel like this. To enter a level just drive over a platform. It's that simple."));
 			} else if(!typing && speechIndex == 3 && startTyping) {
@@ -64,6 +69,7 @@ public class HomeTutorial : MonoBehaviour {
 				startTyping = false;
 				typing = true;
 				resetButton.SetActive(true);
+				panButton.SetActive(true);
 				//lightsButton.SetActive(true);
 				StartCoroutine(ShowText("The buttons on your left will allow you to reset your car to the beginning and zoom and pan around the level. You can tap the middle of the screen to upright your car should you even end upside down. "));
 			} else if(!typing && speechIndex == 5 && startTyping) {
