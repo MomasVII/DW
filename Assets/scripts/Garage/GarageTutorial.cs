@@ -73,6 +73,7 @@ public class GarageTutorial : MonoBehaviour {
 				StartCoroutine(ShowText("Hey, welcome to my garage. My name is Kate and you must be?... "));
 				nextSpeechButton.SetActive(true);
 				inputField.SetActive(true);
+		        PlayerPrefs.SetString("metrics", "kph");
 			} else if(!typing && speechIndex == 2 && startTyping) {
 				StartCoroutine(saveUsername());
 				startTyping = false;

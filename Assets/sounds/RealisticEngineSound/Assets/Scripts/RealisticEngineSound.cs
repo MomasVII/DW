@@ -185,6 +185,7 @@ public class RealisticEngineSound : MonoBehaviour {
 
     private void Start()
     {
+        masterVolume = PlayerPrefs.GetFloat("sfxVolume");
         ghostScript = GameObject.FindObjectOfType<Ghost>();
         GameObject car = GameObject.FindWithTag("Player");
 		rearLeft = car.transform.Find("wheels/RearLeft").GetComponent<WheelCollider>();

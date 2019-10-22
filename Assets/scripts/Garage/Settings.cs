@@ -59,4 +59,13 @@ public class Settings : MonoBehaviour
         }
     }
 
+    public void changeMusicVolume() {
+        PlayerPrefs.SetFloat("musicVolume", qualitySlider.value);
+    }
+
+    public void changeSoundEffects() {
+        PlayerPrefs.SetFloat("sfxVolume", qualitySlider.value);
+    }
+
+
 }

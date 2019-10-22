@@ -30,26 +30,23 @@ public class Menu : MonoBehaviour
         ad_time = ad_time+(24*3600);
 
         garageTutorial = GetComponent<GarageTutorial>();
-        PlayerPrefs.SetString("metrics", "kph");
-        if(PlayerPrefs.HasKey("metrics")) {
-            tapToContinue.SetActive(true);
-            locationGO.SetActive(false);
-            nextButton.gameObject.SetActive(false);
-            if(PlayerPrefs.GetInt("loadGarage") == 1) { //Loading garage from Home, show all canvas elements
-                MenuGO.SetActive(false);
-                PostProcessing.SetActive(false);
-                buttonGO.SetActive(false);
-                topBar.SetActive(true);
-                carStats.SetActive(true);
-                colors.SetActive(true);
-                prevNext.SetActive(true);
-                tapToContinue.SetActive(false);
+        tapToContinue.SetActive(true);
+        locationGO.SetActive(false);
+        nextButton.gameObject.SetActive(false);
+        if(PlayerPrefs.GetInt("loadGarage") == 1) { //Loading garage from Home, show all canvas elements
+            MenuGO.SetActive(false);
+            PostProcessing.SetActive(false);
+            buttonGO.SetActive(false);
+            topBar.SetActive(true);
+            carStats.SetActive(true);
+            colors.SetActive(true);
+            prevNext.SetActive(true);
+            tapToContinue.SetActive(false);
 
-                if(cur_time > ad_time && ((Application.internetReachability != NetworkReachability.NotReachable) ||
-        			(Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork ||
-        			Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork))) {
-                    adGo.SetActive(true);
-                }
+            if(cur_time > ad_time && ((Application.internetReachability != NetworkReachability.NotReachable) ||
+    			(Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork ||
+    			Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork))) {
+                adGo.SetActive(true);
             }
         }
         PlayerPrefs.SetInt("loadGarage", 0);

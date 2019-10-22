@@ -34,11 +34,16 @@ public class Speedo : MonoBehaviour {
 
 	public void FixedUpdate() {
 		if(car != null) {
+
 			carsSpeed = Mathf.Round(((rb.velocity.magnitude - 0)*180)/(40 - 0));
+			if(PlayerPrefs.GetString("metrics") == "mph") {
+				carsSpeed = Mathf.Floor(carsSpeed*0.6f);
+			}
 			carSpeed.text = carsSpeed.ToString();
 			carSpeedCircle.fillAmount = ((rb.velocity.magnitude - 0)*1)/(40 - 0);
 			driftScoreManager.checkCarSpeed(carsSpeed);
 			skidmarksManager.checkCarSpeed(carsSpeed);
+			Debug.Log(carsSpeed);
 		} else {
 			car = GameObject.FindWithTag("Player");
 			rb = car.GetComponent<Rigidbody>();

@@ -10,6 +10,7 @@ public class Crash : MonoBehaviour
 
     void Start() {
         audio = GetComponent<AudioSource>();
+        audio.volume = PlayerPrefs.GetFloat("sfxVolume");
     }
 
     void OnCollisionEnter(Collision col) {
