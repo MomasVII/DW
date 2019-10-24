@@ -73,7 +73,6 @@ public class ResetPlayer : MonoBehaviour {
 
 	public void uprightPlayer() {
 		GameObject resetMe = car;
-		Debug.Log("test");
 		resetMe.GetComponent<Rigidbody>().velocity = Vector3.zero;
 		resetMe.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 
