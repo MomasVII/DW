@@ -15,8 +15,6 @@ public class ChangeCar : MonoBehaviour {
 
 	GameObject[] theCar; //Array holding the cars in the scene
 
-	bool changeCar = false;
-
 	public Image speedLine, speedUnderline;
 	public Image accelerationLine, accelerationUnderline;
 	public Image handlingLine, handlingUnderline;
@@ -387,45 +385,41 @@ public class ChangeCar : MonoBehaviour {
 
 	}
 
-	void Update() {
+	public void changeMyCar() {
 		//Debug.Log("Color: " + GameDataController.getCarsColor(selectedCar) + " " + PlayerPrefs.GetString("Car"+selectedCar+"Colour"));
 		//Debug.Log("SpecColor: " + GameDataController.getCarsSpecColor(selectedCar) + " " + PlayerPrefs.GetString("Car"+selectedCar+"SpecColour"));
-		if(changeCar) {
-			Debug.Log(PlayerPrefs.GetString("GameData"));
-			Destroy(theCar[currentCar]);
-			currentCar = selectedCar;
-			theCar[selectedCar] = Instantiate(Resources.Load("Car"+selectedCar, typeof(GameObject)), startPosition, transform.rotation) as GameObject;
+		Debug.Log(PlayerPrefs.GetString("GameData"));
+		Destroy(theCar[currentCar]);
+		currentCar = selectedCar;
+		theCar[selectedCar] = Instantiate(Resources.Load("Car"+selectedCar, typeof(GameObject)), startPosition, transform.rotation) as GameObject;
 
-			//Disable dust, make car bouncy and turn off trigger collider
-			theCar[currentCar].transform.GetChild(2).gameObject.SetActive(false);
-			theCar[currentCar].transform.GetChild(3).gameObject.SetActive(false);
-			ChangeWheelColliders.changeWheelCollider(theCar[currentCar]);
-			theCar[selectedCar].GetComponent<Collider>().isTrigger = false;
+		//Disable dust, make car bouncy and turn off trigger collider
+		theCar[currentCar].transform.GetChild(2).gameObject.SetActive(false);
+		theCar[currentCar].transform.GetChild(3).gameObject.SetActive(false);
+		ChangeWheelColliders.changeWheelCollider(theCar[currentCar]);
+		theCar[selectedCar].GetComponent<Collider>().isTrigger = false;
 
-			//Change Car Price
-			int currentCarPrice =  System.Convert.ToInt32(dict[selectedCar.ToString()]["Price"].ToString());
-			carPrice.text = "$"+currentCarPrice.ToString("n0");
+		//Change Car Price
+		int currentCarPrice =  System.Convert.ToInt32(dict[selectedCar.ToString()]["Price"].ToString());
+		carPrice.text = "$"+currentCarPrice.ToString("n0");
 
-			if(!GameDataController.getCars(selectedCar)) {
-				//Get values for stats
-				//((input - min) * 100) / (max - min)
-				speedLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Speed"].ToString()), speedMin, speedMax) / 100;
-				accelerationLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Acceleration"].ToString()), accellerationMin, accellerationMax) / 100;
-				handlingLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Handling"].ToString()), handlingMin, handlingMax) / 100;
+		if(!GameDataController.getCars(selectedCar)) {
+			//Get values for stats
+			//((input - min) * 100) / (max - min)
+			speedLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Speed"].ToString()), speedMin, speedMax) / 100;
+			accelerationLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Acceleration"].ToString()), accellerationMin, accellerationMax) / 100;
+			handlingLine.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Handling"].ToString()), handlingMin, handlingMax) / 100;
 
-				speedUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Speed"].ToString()), speedMin, speedMax) / 100 + 0.03f;
-				accelerationUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Acceleration"].ToString()), accellerationMin, accellerationMax) / 100 + 0.03f;
-				handlingUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Handling"].ToString()), handlingMin, handlingMax) / 100 + 0.03f;
-			} else {
-				//Get saved car stats
-				getCarStat(selectedCar, "speed");
-				getCarStat(selectedCar, "acceleration");
-				getCarStat(selectedCar, "handling");
-			}
-			setCarColors(); //Change car to selected color
-
-			changeCar = false;
+			speedUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Speed"].ToString()), speedMin, speedMax) / 100 + 0.03f;
+			accelerationUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Acceleration"].ToString()), accellerationMin, accellerationMax) / 100 + 0.03f;
+			handlingUnderline.fillAmount = getPercentageOf(float.Parse(dict[selectedCar.ToString()]["Handling"].ToString()), handlingMin, handlingMax) / 100 + 0.03f;
+		} else {
+			//Get saved car stats
+			getCarStat(selectedCar, "speed");
+			getCarStat(selectedCar, "acceleration");
+			getCarStat(selectedCar, "handling");
 		}
+		setCarColors(); //Change car to selected color
 	}
 
 	public void buyCar() {
@@ -608,7 +602,7 @@ public class ChangeCar : MonoBehaviour {
 		} else {
 			ownedCar();
 		}
-		changeCar = true;
+		changeMyCar();
 	}
 	public void nextCar() {
 		hideConfirm();
@@ -624,7 +618,7 @@ public class ChangeCar : MonoBehaviour {
 			} else {
 				ownedCar();
 			}
-			changeCar = true;
+			changeMyCar();
 		}
 	}
 	public void previousCar() {
@@ -641,7 +635,7 @@ public class ChangeCar : MonoBehaviour {
 			} else {
 				ownedCar();
 			}
-			changeCar = true;
+			changeMyCar();
 		}
 	}
 	public void selectCar() {

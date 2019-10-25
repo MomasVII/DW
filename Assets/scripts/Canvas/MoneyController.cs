@@ -34,7 +34,7 @@ public class MoneyController : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if(Time.time >= nextUpdate && isNet){
 			// Change the next update (current second+1)
 			nextUpdate=Mathf.FloorToInt(Time.time)+1;

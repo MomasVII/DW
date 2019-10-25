@@ -13,7 +13,7 @@ public class SnowFollowHome : MonoBehaviour
 		player = GameObject.FindWithTag("Player");
 	}
 
-    void Update() {
+    void FixedUpdate() {
         if(entered) {
             snowParticles.transform.position = new Vector3(player.transform.position.x, player.transform.position.y+10, player.transform.position.z);
         }

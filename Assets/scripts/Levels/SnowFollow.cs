@@ -6,13 +6,11 @@ public class SnowFollow : MonoBehaviour {
 
 	GameObject player;
 
-	// Use this for initialization
 	void Start () {
 		player = GameObject.FindWithTag("Player");
 	}
 
-	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		transform.position = new Vector3(player.transform.position.x, player.transform.position.y+10, player.transform.position.z);
 	}
 }

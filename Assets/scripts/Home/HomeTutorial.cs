@@ -45,8 +45,7 @@ public class HomeTutorial : MonoBehaviour {
 
 	}
 
-	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
 		if(!PlayerPrefs.HasKey("homeTutorial")) { //Check if playerpref car has been created
 			if(!typing && speechIndex == 1 && startTyping) {
