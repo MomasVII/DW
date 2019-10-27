@@ -40,8 +40,8 @@ public class Dot_Truck_Controller : MonoBehaviour {
 	float smooth = 2.0f;
 	//float tiltAngle = 60.0f;
 
-	Light left_light;
-	Light right_light;
+	public Light left_light;
+	public Light right_light;
 
 	public Light left_headlight;
 	public Light right_headlight;
@@ -59,11 +59,6 @@ public class Dot_Truck_Controller : MonoBehaviour {
 	//Give acces to get function
 	private float motor;
 
-	public void SetLight() {
-		left_light = GameObject.Find("Left_Taillight").GetComponent<Light>();
-		right_light = GameObject.Find("Right_Taillight").GetComponent<Light>();
-	}
-
 	void Start() {
 		driftScoreManager = GameObject.FindObjectOfType<DriftScoreManager>();
 		maxMotorTorque = PlayerPrefs.GetInt("Speed");
@@ -74,14 +69,13 @@ public class Dot_Truck_Controller : MonoBehaviour {
 
 		//Get ghost script
 		ghostScript = GameObject.FindObjectOfType<Ghost>();
+
+		left_headlight.enabled = false;
+		right_headlight.enabled = false;
 	}
 
 	public void FixedUpdate()
 	{
-
-		if(left_light == null || right_light == null) {
-			SetLight();
-		}
 
 		Quaternion target = Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
 		transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
@@ -140,13 +134,13 @@ public class Dot_Truck_Controller : MonoBehaviour {
 			VisualizeWheel(truck_Info);
 		}
 
-		if(lightsOn) {
+		/*if(lightsOn) {
 			left_headlight.enabled = true;
 			right_headlight.enabled = true;
 		} else {
 			left_headlight.enabled = false;
 			right_headlight.enabled = false;
-		}
+		}*/
 
 	}
 

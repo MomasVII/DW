@@ -13,7 +13,7 @@ public class LoadingScreen : MonoBehaviour {
 		StartCoroutine(LoadAsynchronously(levelName));
 	}
 
-	IEnumerator LoadAsynchronously (string sceneName) {
+	IEnumerator LoadAsynchronously(string sceneName) {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
         loadingScreen.SetActive(true);
         while(!operation.isDone) {

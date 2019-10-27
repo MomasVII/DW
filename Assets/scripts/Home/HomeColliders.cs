@@ -30,8 +30,6 @@ public class HomeColliders : MonoBehaviour {
     private int WRcarUsed;
     private string WRghostID;
 
-    public Text ErrorText;
-
     //Slow car on enter
     private Dot_Truck_Controller dotTruckController;
 
@@ -175,7 +173,6 @@ public class HomeColliders : MonoBehaviour {
 
     public IEnumerator downloadWorldRecordGhost() {
 
-        ErrorText.text += "\nDownloading World Record Ghost";
 
         WWW wwwHighscores = new WWW("https://www.undivided.games/DriftWorlds/GetScore.php?level="+sceneName);
         while (!wwwHighscores.isDone) {
@@ -184,10 +181,10 @@ public class HomeColliders : MonoBehaviour {
 
         if (wwwHighscores.error != null)
         {
-            ErrorText.text += "\nThere was an error getting the high score: " + wwwHighscores.error;
+            Debug.Log("There was an error getting the high score: " + wwwHighscores.error);
         } else {
             string[] szSplited = wwwHighscores.text.Split(',');
-            ErrorText.text += "\nHighscore returned: "+szSplited[0]+" "+szSplited[1]+" "+szSplited[2];
+            Debug.Log("Highscore returned: "+szSplited[0]+" "+szSplited[1]+" "+szSplited[2]);
 
             WRghostID = szSplited[0];
             WRcarUsed = int.Parse(szSplited[1]);
@@ -235,11 +232,11 @@ public class HomeColliders : MonoBehaviour {
 
     void LoadLevel() {
         // Show an ad:
-        if((Application.internetReachability != NetworkReachability.NotReachable) ||
+        if(((Application.internetReachability != NetworkReachability.NotReachable) ||
 			(Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork ||
-			Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork) &&
+			Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)) &&
 			PlayerPrefs.GetString("NoAds") != "NoAds") {
-			UnityAdsManager.Instance.ShowRegularAd(OnAdClosed);
+			    UnityAdsManager.Instance.ShowRegularAd(OnAdClosed);
 		} else {
             if(sceneName == "Garage") {
                 PlayerPrefs.SetInt("loadGarage", 1);

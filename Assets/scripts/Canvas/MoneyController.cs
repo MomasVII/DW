@@ -25,26 +25,26 @@ public class MoneyController : MonoBehaviour {
 
 	void Start() {
 		//Don't incremenet money if there is no internet
-		if (((Application.internetReachability == NetworkReachability.NotReachable) ||
+		if ((Application.internetReachability == NetworkReachability.NotReachable) ||
 			(Application.internetReachability != NetworkReachability.ReachableViaCarrierDataNetwork &&
-			Application.internetReachability != NetworkReachability.ReachableViaLocalAreaNetwork)) &&
-			PlayerPrefs.GetString("NoAds") != "NoAds") {
+			Application.internetReachability != NetworkReachability.ReachableViaLocalAreaNetwork)) {
 			isNet = false;
+		} else {
+			 StartCoroutine("payMoney");
 		}
 	}
 
-	// Update is called once per frame
-	void FixedUpdate () {
-		if(Time.time >= nextUpdate && isNet){
-			// Change the next update (current second+1)
-			nextUpdate=Mathf.FloorToInt(Time.time)+1;
-			storePlayerCash += 5000;
-			incrementalMoney += 5000;
-			if(incrementalMoney < 200000) {
-				updatePlayerMoney();
-				saveMoney();
-			}
-         }
+	IEnumerator payMoney() {
+	     for(;;) {
+			 storePlayerCash += 5000;
+ 			incrementalMoney += 5000;
+ 			if(incrementalMoney < 200000) {
+ 				updatePlayerMoney();
+ 				saveMoney();
+ 			}
+	         // execute block of code here
+	         yield return new WaitForSeconds(1f);
+	     }
 	}
 
 	public void updateDriftMoney(int driftAmount) {

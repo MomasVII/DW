@@ -97,6 +97,9 @@ public class Skidmarks : MonoBehaviour {
 		mr.material = skidmarksMaterial;
 		mr.lightProbeUsage = LightProbeUsage.Off;
 
+		particle_rl = GameObject.Find("Particle_RL").GetComponent<ParticleSystem>();
+		particle_rr = GameObject.Find("Particle_RR").GetComponent<ParticleSystem>();
+
 	}
 
 	protected void LateUpdate() {
@@ -234,10 +237,6 @@ public class Skidmarks : MonoBehaviour {
 		meshUpdated = true;
 
 		if(scene.name != "Garage") {
-			particle_rl = GameObject.Find("Particle_RL").GetComponent<ParticleSystem>();
-			particle_rr = GameObject.Find("Particle_RR").GetComponent<ParticleSystem>();
-			/*particle_fl = GameObject.Find("Particle_FL").GetComponent<ParticleSystem>();
-			particle_fr = GameObject.Find("Particle_FR").GetComponent<ParticleSystem>();*/
 
 			if(last.Intensity > 90) {
 				particle_rl.Play();

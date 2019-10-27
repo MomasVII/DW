@@ -5836,7 +5836,7 @@ GameObject:
   - component: {fileID: 65648881525840554}
   - component: {fileID: 114192025090018434}
   m_Layer: 0
-  m_Name: Car10
+  m_Name: Car12
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5933,6 +5933,8 @@ MonoBehaviour:
     motor: 1
     steering: 0
     reverseTurn: 0
+  left_light: {fileID: 108450134666275834}
+  right_light: {fileID: 108328988613536530}
   left_headlight: {fileID: 108218401841927004}
   right_headlight: {fileID: 108869821460401796}
   reversed: 0

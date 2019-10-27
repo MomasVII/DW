@@ -96,9 +96,9 @@ public class GarageCollider : MonoBehaviour
 
     void LoadLevel() {
         // Show an ad:
-        if((Application.internetReachability != NetworkReachability.NotReachable) ||
+        if(((Application.internetReachability != NetworkReachability.NotReachable) ||
 			(Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork ||
-			Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork) &&
+			Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)) &&
 			PlayerPrefs.GetString("NoAds") != "NoAds") {
 			UnityAdsManager.Instance.ShowRegularAd(OnAdClosed);
 		} else {

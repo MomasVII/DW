@@ -20654,6 +20654,8 @@ MonoBehaviour:
     motor: 1
     steering: 0
     reverseTurn: 0
+  left_light: {fileID: 682941210623957688}
+  right_light: {fileID: 3692525999245042044}
   left_headlight: {fileID: 1579757012489790822}
   right_headlight: {fileID: 2921265496602103905}
   reversed: 0

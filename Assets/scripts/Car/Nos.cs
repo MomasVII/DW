@@ -22,6 +22,8 @@ public class Nos : MonoBehaviour {
 
     private ParticleSystem wildfireLeft, wildfireRight;
 
+    private Rigidbody carRB;
+
     // Start is called before the first frame update
     void Start() {
         car = GameObject.FindWithTag("Player");
@@ -33,38 +35,45 @@ public class Nos : MonoBehaviour {
         rearLeft = car.transform.Find("wheels/RearLeft").GetComponent<WheelCollider>();
 		rearRight = car.transform.Find("wheels/RearRight").GetComponent<WheelCollider>();
 
+        carRB = car.GetComponent<Rigidbody>();
+
+		StartCoroutine("addNos");
     }
+
+    IEnumerator addNos() {
+	     for(;;) {
+             fillPercent += 0.02f;
+             flameColored.fillAmount = fillPercent;
+             if(fillPercent > 0.99f) {
+                 flameGlow.SetActive(true);
+             }
+             if(fillPercent > 1) { fillPercent = 1; }
+	         // execute block of code here
+	         yield return new WaitForSeconds(1f);
+	     }
+	}
 
     // Update is called once per frame
     void FixedUpdate() {
         if(nosing && fillPercent > 0.1f && (rearRight.isGrounded || rearLeft.isGrounded)) {
-            car.GetComponent<Rigidbody>().AddForce(car.transform.forward * startForce, ForceMode.Acceleration);
+            carRB.AddForce(car.transform.forward * startForce, ForceMode.Acceleration);
             startForce++;
             if(startForce > maxForce) { startForce = maxForce; }
             fillPercent -= 0.01f;
             if(fillPercent < 0) { fillPercent = 0; }
             wildfireLeft.Play();
             wildfireRight.Play();
+            flameColored.fillAmount = fillPercent;
         } else {
             wildfireLeft.Stop();
             wildfireRight.Stop();
             startForce = 10;
-            if(Time.time >= nextUpdate) {
-                nextUpdate=Mathf.FloorToInt(Time.time)+1;
-                fillPercent += 0.02f;
-            }
         }
-        if( fillPercent > 0.99f) {
-            flameGlow.SetActive(true);
-        } else {
-            flameGlow.SetActive(false);
-        }
-        flameColored.fillAmount = fillPercent;
-        if(fillPercent > 1) { fillPercent = 1; }
     }
 
     public void StartNos() {
         nosing = true;
+        flameGlow.SetActive(false);
     }
 
     public void StopNos() {
@@ -73,6 +82,7 @@ public class Nos : MonoBehaviour {
 
     public void refill() {
         fillPercent = 1.0f;
+        flameGlow.SetActive(true);
     }
 
 }
