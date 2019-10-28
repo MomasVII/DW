@@ -14,16 +14,28 @@ public class Settings : MonoBehaviour
     public Image ausFlag, usaFlag;
     public Sprite ausSprite, usaSprite, ausGSSprite, usaGSSprite;
 
-    //Quality settings slider
-    public Slider qualitySlider;
+    //Quality/Audio settings slider
+    public Slider qualitySlider, musicSlider, sfxSlider;
+
+    //Change audio volume
+    public AudioSource audioSource, sfx1, sfx2, sfx3, sfx4;
 
     //Get Quality scripts and change based on slider
-    public Quality quality;
+    private Quality quality;
 
     public void Start() {
         quality = GetComponent<Quality>();
         qualitySlider.value = PlayerPrefs.GetFloat("quality")/100;
+        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
         changeMetric(PlayerPrefs.GetString("metrics"));
+
+        //Set initial sound settings
+        float sfxv = PlayerPrefs.GetFloat("sfxVolume");
+        sfx1.volume = sfxv;
+        sfx2.volume = sfxv;
+        sfx3.volume = sfxv;
+        sfx4.volume = sfxv;
     }
 
     public void showSettings() {
@@ -60,11 +72,16 @@ public class Settings : MonoBehaviour
     }
 
     public void changeMusicVolume() {
-        PlayerPrefs.SetFloat("musicVolume", qualitySlider.value);
+        PlayerPrefs.SetFloat("musicVolume", musicSlider.value);
+        audioSource.volume = musicSlider.value;
     }
 
     public void changeSoundEffects() {
-        PlayerPrefs.SetFloat("sfxVolume", qualitySlider.value);
+        PlayerPrefs.SetFloat("sfxVolume", sfxSlider.value);
+        sfx1.volume = sfxSlider.value;
+        sfx2.volume = sfxSlider.value;
+        sfx3.volume = sfxSlider.value;
+        sfx4.volume = sfxSlider.value;
     }
 
 

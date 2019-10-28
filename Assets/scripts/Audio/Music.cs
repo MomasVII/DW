@@ -13,8 +13,8 @@ public class Music : MonoBehaviour
     {
         audioSource.Stop();
         audioSource.loop = true;
-        audioSource.clip = songs[Random.Range(0, songs.Length)];
         audioSource.volume = PlayerPrefs.GetFloat("musicVolume");
+        audioSource.clip = songs[Random.Range(0, songs.Length)];
         audioSource.Play();
     }
 

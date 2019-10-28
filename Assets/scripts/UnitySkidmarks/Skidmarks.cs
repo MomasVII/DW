@@ -58,9 +58,13 @@ public class Skidmarks : MonoBehaviour {
 
 	Scene scene;
 
+	private float sfxv;
+
 	// #### UNITY INTERNAL METHODS ####
 
 	protected void Start() {
+
+		sfxv = PlayerPrefs.GetFloat("sfxVolume");
 
 		scene = SceneManager.GetActiveScene();
 
@@ -99,6 +103,7 @@ public class Skidmarks : MonoBehaviour {
 
 		particle_rl = GameObject.Find("Particle_RL").GetComponent<ParticleSystem>();
 		particle_rr = GameObject.Find("Particle_RR").GetComponent<ParticleSystem>();
+
 
 	}
 
@@ -180,10 +185,14 @@ public class Skidmarks : MonoBehaviour {
 		if(carsSpeed < 10) {
 			skidSource.volume = 0;
 		} else if(carsSpeed < 50) {
-			skidSource.volume = (carsSpeed-10)/100;
+			skidSource.volume = getPercentageOf((carsSpeed-10)/100, 0, 1)*sfxv;
 		} else {
-			skidSource.volume = intensity*0.7f;
+			skidSource.volume = getPercentageOf(intensity*0.7f, 0, 1)*sfxv;
 		}
+	}
+
+	private float getPercentageOf(float input, int min, int max) {
+		return ((input - min) * 1) / (max - min);
 	}
 
 	public void checkCarSpeed(float carSpeed){
@@ -244,8 +253,10 @@ public class Skidmarks : MonoBehaviour {
 				/*particle_fl.Play();
 				particle_fr.Play();*/
 			} else {
-				particle_rl.Stop();
-				particle_rr.Stop();
+				if (particle_rl.isPlaying) {
+					particle_rl.Stop();
+					particle_rr.Stop();
+				}
 				/*particle_fl.Stop();
 				particle_fr.Stop();*/
 			}
