@@ -41,6 +41,9 @@ public class CameraController : MonoBehaviour
 	//Hide these on panning
 	public GameObject reset, controls, money;
 
+	//Camera variables
+	private Vector3 camSpeedOffsetTarget;
+
 	public void Start() {
 		car = GameObject.FindWithTag(tagString);
 		transform.position = new Vector3(car.transform.position.x-posX+carPos, car.transform.position.y+posY, car.transform.position.z-posZ);
@@ -50,8 +53,8 @@ public class CameraController : MonoBehaviour
 
 	public void FixedUpdate() {
 		//Get car speed
-		speedTo = (car.transform.position - lastPosition).magnitude;
 		if(Time.time >= nextUpdate){
+			speedTo = (car.transform.position - lastPosition).magnitude;
 			nextUpdate=Mathf.FloorToInt(Time.time)+0.1f;
 			if(speedTo > speed) {
 				if(speed+0.001f > speedTo) {
@@ -68,7 +71,6 @@ public class CameraController : MonoBehaviour
 			}
 		}
 		lastPosition = car.transform.position;
-
 	}
 
 	void Update ()
@@ -83,7 +85,7 @@ public class CameraController : MonoBehaviour
 			orthCamera.orthographicSize = orthS+(Mathf.Clamp(speed, 0, 0.70f)*30);*/
 
 			if(tagString == "Player") {
-				Vector3 camSpeedOffsetTarget = car.transform.forward * (Mathf.Clamp(speed, 0, 0.70f)*20);
+				camSpeedOffsetTarget = car.transform.forward * (Mathf.Clamp(speed, 0, 0.70f)*20);
 				camSpeedOffset = Vector3.SmoothDamp(camSpeedOffset, camSpeedOffsetTarget,
 	        	ref camVelocity, cameraSmoothTime, maxCameraOffsetVelocity);
 
@@ -121,7 +123,7 @@ public class CameraController : MonoBehaviour
 					Camera.main.transform.position += direction;
 				}
 
-				zoom(Input.GetAxis("Mouse ScrollWheel"));
+				//zoom(Input.GetAxis("Mouse ScrollWheel")); Scroll wheel
 
 			}
 
