@@ -11,6 +11,7 @@ public class LoadingScreen : MonoBehaviour {
 
 	public void LoadLevel(string levelName) {
 		StartCoroutine(LoadAsynchronously(levelName));
+		System.GC.Collect();
 	}
 
 	IEnumerator LoadAsynchronously(string sceneName) {
@@ -19,8 +20,6 @@ public class LoadingScreen : MonoBehaviour {
         while(!operation.isDone) {
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
             slider.value = progress;
-            Debug.Log(progress);
-
             yield return null;
         }
     }

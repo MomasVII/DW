@@ -9,7 +9,7 @@ public class Network : MonoBehaviour {
 	private bool continueCoroutine = true;
 
 	void Start () {
-		StartCoroutine(checkNetwork());
+		//StartCoroutine(checkNetwork());
 	}
 
 	IEnumerator checkNetwork() {

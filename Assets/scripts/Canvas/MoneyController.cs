@@ -35,6 +35,7 @@ public class MoneyController : MonoBehaviour {
 	}
 
 	IEnumerator payMoney() {
+		WaitForSeconds delay = new WaitForSeconds(1f);
 	     for(;;) {
 			 storePlayerCash += 5000;
  			incrementalMoney += 5000;
@@ -43,7 +44,7 @@ public class MoneyController : MonoBehaviour {
  				saveMoney();
  			}
 	         // execute block of code here
-	         yield return new WaitForSeconds(1f);
+	         yield return delay;
 	     }
 	}
 

@@ -41,7 +41,8 @@ public class Nos : MonoBehaviour {
     }
 
     IEnumerator addNos() {
-	     for(;;) {
+        WaitForSeconds delay = new WaitForSeconds(1f);
+	    for(;;) {
              fillPercent += 0.02f;
              flameColored.fillAmount = fillPercent;
              if(fillPercent > 0.99f) {
@@ -49,8 +50,8 @@ public class Nos : MonoBehaviour {
              }
              if(fillPercent > 1) { fillPercent = 1; }
 	         // execute block of code here
-	         yield return new WaitForSeconds(1f);
-	     }
+	         yield return delay;
+	    }
 	}
 
     // Update is called once per frame
