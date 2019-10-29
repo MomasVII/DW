@@ -101,8 +101,9 @@ public class Skidmarks : MonoBehaviour {
 		mr.material = skidmarksMaterial;
 		mr.lightProbeUsage = LightProbeUsage.Off;
 
-		particle_rl = GameObject.Find("Particle_RL").GetComponent<ParticleSystem>();
-		particle_rr = GameObject.Find("Particle_RR").GetComponent<ParticleSystem>();
+		GameObject theDemo = GameObject.FindWithTag("Player");
+		particle_rl = theDemo.transform.Find("Dust").transform.Find("Particle_RL").GetComponent<ParticleSystem>();
+		particle_rr = theDemo.transform.Find("Dust").transform.Find("Particle_RR").GetComponent<ParticleSystem>();
 
 
 	}

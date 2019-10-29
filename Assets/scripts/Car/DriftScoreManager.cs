@@ -15,6 +15,12 @@ public class DriftScoreManager : MonoBehaviour {
 	//Used to set drift money to player cash
 	public MoneyController moneyController;
 
+	private int findDemo;
+
+	public void Start() {
+		findDemo = GameObject.FindGameObjectsWithTag("Demo").Length;
+	}
+
 	public void checkCarSpeed(float carSpeed) {
 		if(carSpeed < 40) {
 			allowDrift = false;
@@ -33,6 +39,8 @@ public class DriftScoreManager : MonoBehaviour {
 
 	public void resetTotal() {
 		driftScoreText.text = "";
+		findDemo = GameObject.FindGameObjectsWithTag("Demo").Length;
+		Debug.Log("In here");
 		totalDrift = 0;
 	}
 
@@ -41,7 +49,7 @@ public class DriftScoreManager : MonoBehaviour {
 	}
 
 	public void updateScore(byte intensity) {
-		if(GameObject.FindGameObjectsWithTag("Demo").Length == 0) {
+		if(findDemo == 1) {
 			if (intensity > 100 && allowDrift && allowDriftReversed) {
 				driftScore++;
 

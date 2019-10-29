@@ -429,10 +429,10 @@ public class Ghost : MonoBehaviour {
 		        theGhost.transform.rotation = Quaternion.Slerp(a.rotMark, b.rotMark, Mathf.Clamp(replayTime, a.timeMark, b.timeMark));
 
 				//Wheel Rotation
-				wheelRotationBL.rotation = Quaternion.Slerp(a.wheelrotMarkRight, b.wheelrotMarkRight, Mathf.Clamp(replayTime, a.timeMark, b.timeMark));
+				/*wheelRotationBL.rotation = Quaternion.Slerp(a.wheelrotMarkRight, b.wheelrotMarkRight, Mathf.Clamp(replayTime, a.timeMark, b.timeMark));
 				wheelRotationBR.rotation = Quaternion.Slerp(a.wheelrotMarkRight, b.wheelrotMarkRight, Mathf.Clamp(replayTime, a.timeMark, b.timeMark));
 				wheelRotationFL.rotation = Quaternion.Slerp(a.wheelrotMarkLeft, b.wheelrotMarkLeft, Mathf.Clamp(replayTime, a.timeMark, b.timeMark));
-				wheelRotationFR.rotation = Quaternion.Slerp(a.wheelrotMarkLeft, b.wheelrotMarkLeft, Mathf.Clamp(replayTime, a.timeMark, b.timeMark));
+				wheelRotationFR.rotation = Quaternion.Slerp(a.wheelrotMarkLeft, b.wheelrotMarkLeft, Mathf.Clamp(replayTime, a.timeMark, b.timeMark));*/
 			//}
 		} else if(runningDemo) {
 			//if(GameObject.FindWithTag("Demo") != null) {
