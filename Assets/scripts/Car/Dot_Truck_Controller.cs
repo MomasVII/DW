@@ -53,8 +53,10 @@ public class Dot_Truck_Controller : MonoBehaviour {
 				turnRight = false,
 				accelerate = false;
 
-	//Used to get motor speed on ghost replay
-	private Ghost ghostScript;
+	//Dottruck variables
+	private Quaternion target;
+	private float steering;
+	private bool checkReverse = false;
 
 	//Give acces to get function
 	private float motor;
@@ -63,12 +65,8 @@ public class Dot_Truck_Controller : MonoBehaviour {
 		driftScoreManager = GameObject.FindObjectOfType<DriftScoreManager>();
 		maxMotorTorque = PlayerPrefs.GetInt("Speed");
 		maxSteeringAngle = PlayerPrefs.GetInt("Handling");
-		Rigidbody rb;
-		rb = GetComponent<Rigidbody>();
+		Rigidbody rb = GetComponent<Rigidbody>();
 		rb.mass = 210 - PlayerPrefs.GetInt("Acceleration");
-
-		//Get ghost script
-		ghostScript = GameObject.FindObjectOfType<Ghost>();
 
 		left_headlight.enabled = false;
 		right_headlight.enabled = false;
@@ -77,11 +75,11 @@ public class Dot_Truck_Controller : MonoBehaviour {
 	public void FixedUpdate()
 	{
 
-		Quaternion target = Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
+		target = Quaternion.Euler(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
 		transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smooth);
 
 		motor = maxMotorTorque * Input.GetAxis("Vertical");
-		float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
+		steering = maxSteeringAngle * Input.GetAxis("Horizontal");
 
 		if(accelerate) {
 
@@ -108,12 +106,14 @@ public class Dot_Truck_Controller : MonoBehaviour {
 			motor = -Mathf.Abs(motor);
 			left_light.enabled = true;
 			right_light.enabled = true;
-			if(driftScoreManager != null) {
+			if(!checkReverse) {
 				driftScoreManager.checkReverse(true);
+				checkReverse = true;
 			}
 		} else {
-			if(driftScoreManager != null) {
+			if(checkReverse) {
 				driftScoreManager.checkReverse(false);
+				checkReverse = false;
 			}
 		}
 

@@ -66,8 +66,10 @@ public class Nos : MonoBehaviour {
             wildfireRight.Play();
             flameColored.fillAmount = fillPercent;
         } else {
-            wildfireLeft.Stop();
-            wildfireRight.Stop();
+            if (wildfireLeft.isPlaying) {
+                wildfireLeft.Stop();
+                wildfireRight.Stop();
+            }
             startForce = 10;
         }
     }

@@ -101,11 +101,11 @@ public class HomeTutorial : MonoBehaviour {
 	}
 
 	IEnumerator ShowText(string myText) {
-		WaitForSeconds delay = new WaitForSeconds(1f);
+		WaitForSeconds localdelay = new WaitForSeconds(delay);
 		for(int i = 0; i <= myText.Length; i++) {
 			currentText = myText.Substring(0,i);
 			characterSpeech.text = currentText;
-			yield return delay;
+			yield return localdelay;
 		}
 		typing = false;
 	}
