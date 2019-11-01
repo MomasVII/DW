@@ -25,8 +25,6 @@ public class WheelSkid : MonoBehaviour {
 	const float WHEEL_SLIP_MULTIPLIER = 10.0f; // For wheelspin. Adjust how much skids show
 	int lastSkid = -1; // Array index for the skidmarks controller. Index of last skidmark piece this wheel used
 
-	//public TextMesh driftScoreText;
-	float driftScore = 0.0f;
 	// #### UNITY INTERNAL METHODS ####
 
 	protected void Awake() {
@@ -60,7 +58,6 @@ public class WheelSkid : MonoBehaviour {
 			// Skid if we should
 
 			if (skidTotal >= SKID_FX_SPEED) {
-				driftScore++;
 
 				float intensity = Mathf.Clamp01(skidTotal / MAX_SKID_INTENSITY);
 				Vector3 skidPoint = wheelHitInfo.point + (rb.velocity * Time.fixedDeltaTime);
@@ -69,7 +66,6 @@ public class WheelSkid : MonoBehaviour {
 			}
 			else {
 				lastSkid = -1;
-				driftScore = 0;
 			}
 		}
 		else {

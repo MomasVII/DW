@@ -16,7 +16,7 @@ public class Skidmarks : MonoBehaviour {
 	const int MAX_MARKS = 600; // Max number of marks total for everyone together
 	const float MARK_WIDTH = 0.35f; // Width of the skidmarks. Should match the width of the wheels
 	const float GROUND_OFFSET = 0.02f;  // Distance above surface in metres
-	const float MIN_DISTANCE = 0.35f; // Distance between skid texture sections in metres. Bigger = better performance, less smooth
+	const float MIN_DISTANCE = 0.75f; // Distance between skid texture sections in metres. Bigger = better performance, less smooth
 	const float MIN_SQR_DISTANCE = MIN_DISTANCE * MIN_DISTANCE;
 
 	private DriftScoreManager driftScoreManager;
@@ -185,7 +185,7 @@ public class Skidmarks : MonoBehaviour {
 	void PlaySkidSound(float intensity) {
 		if(carsSpeed < 10) {
 			skidSource.volume = 0;
-		} else if(carsSpeed < 50) {
+		} else if(carsSpeed < 45) {
 			skidSource.volume = getPercentageOf((carsSpeed-10)/100, 0, 1)*sfxv;
 		} else {
 			skidSource.volume = getPercentageOf(intensity*0.7f, 0, 1)*sfxv;
@@ -249,8 +249,10 @@ public class Skidmarks : MonoBehaviour {
 		if(scene.name != "Garage") {
 
 			if(last.Intensity > 90) {
-				particle_rl.Play();
-				particle_rr.Play();
+				if (!particle_rl.isPlaying) {
+					particle_rl.Play();
+					particle_rr.Play();
+				}
 				/*particle_fl.Play();
 				particle_fr.Play();*/
 			} else {
@@ -263,9 +265,7 @@ public class Skidmarks : MonoBehaviour {
 			}
 		}
 
-		if(driftScoreManager != null) {
-			driftScoreManager.updateScore(last.Intensity);
-		}
+		driftScoreManager.updateScore(last.Intensity);
 
 	}
 
