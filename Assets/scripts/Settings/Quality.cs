@@ -97,7 +97,6 @@ public class Quality : MonoBehaviour {
 
         //Set quality
         QualitySettings.SetQualityLevel(q, true);
-        Debug.Log(q);
 
         PlayerPrefs.SetInt("QualitySetting", q);
 

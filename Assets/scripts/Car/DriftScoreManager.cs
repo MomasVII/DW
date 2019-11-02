@@ -40,7 +40,6 @@ public class DriftScoreManager : MonoBehaviour {
 	public void resetTotal() {
 		driftScoreText.text = "";
 		findDemo = GameObject.FindGameObjectsWithTag("Demo").Length;
-		Debug.Log("In here");
 		totalDrift = 0;
 	}
 
