@@ -15,11 +15,15 @@ public class Speedo : MonoBehaviour {
 
 	float carsSpeed = 0.0f;
 
-	GameObject car;
-	Rigidbody rb;
+	private GameObject car;
+	private Rigidbody rb;
 
 	private DriftScoreManager driftScoreManager; //Don't update drift if car below x kph
 	private Skidmarks skidmarksManager; //Don't update sound if car below x kph
+
+	private bool greaterThan = true;
+	private int greaterThan2 = 3;
+	private float mag;
 
 	void Start() {
 		driftScoreManager = GameObject.FindObjectOfType<DriftScoreManager>();
@@ -35,14 +39,33 @@ public class Speedo : MonoBehaviour {
 	}
 
 	public void FixedUpdate() {
-		carsSpeed = Mathf.Round(((rb.velocity.magnitude - 0)*180)/(40 - 0));
+		mag = rb.velocity.magnitude;
+		carsSpeed = Mathf.Round((mag*180)/40);
 		if(PlayerPrefs.GetString("metrics") == "mph") {
 			carsSpeed = Mathf.Floor(carsSpeed*0.6f);
 		}
 		carSpeed.text = carsSpeed.ToString();
-		carSpeedCircle.fillAmount = ((rb.velocity.magnitude - 0)*1)/(40 - 0);
-		driftScoreManager.checkCarSpeed(carsSpeed);
-		skidmarksManager.checkCarSpeed(carsSpeed);
+		carSpeedCircle.fillAmount = (mag*1)/40;
+
+		//Run if speed changes from above or below 45
+		if(checkSpeed > 45 && !greaterThan) {
+			driftScoreManager.checkCarSpeed(true);
+			greaterThan = true;
+		} else if(checkSpeed < 45 && greaterThan) {
+			driftScoreManager.checkCarSpeed(false);
+			greaterThan = false;
+		}
+
+		if(checkSpeed < 10 && greaterThan2 != 0) {
+			skidmarksManager.checkCarSpeed(carsSpeed);
+			greaterThan2 = 0;
+		} else if(checkSpeed < 45 && checkSpeed >= 10) {
+			skidmarksManager.checkCarSpeed(carsSpeed);
+		} else if(checkSpeed >= 45 && greaterThan2 != 2) {
+			skidmarksManager.checkCarSpeed(carsSpeed);
+			greaterThan2 = 2;
+		}
+
 	}
 
 }

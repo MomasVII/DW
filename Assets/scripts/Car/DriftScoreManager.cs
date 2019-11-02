@@ -6,11 +6,11 @@ using TMPro;
 public class DriftScoreManager : MonoBehaviour {
 
 	public TMP_Text driftScoreText, totalDriftScoreText;
-	int driftScore = 0;
-	int totalDrift = 0; //Total points acquired over the level drifitng
-	float increaseFont = 0.50f;
-	bool allowDrift = true;
-	bool allowDriftReversed = true;
+	private int driftScore = 0;
+	private int totalDrift = 0; //Total points acquired over the level drifitng
+	private float increaseFont = 0.50f;
+	private bool allowDrift = true;
+	private bool allowDriftReversed = true;
 
 	//Used to set drift money to player cash
 	public MoneyController moneyController;
@@ -19,14 +19,15 @@ public class DriftScoreManager : MonoBehaviour {
 
 	public void Start() {
 		findDemo = GameObject.FindGameObjectsWithTag("Demo").Length;
+
+		//Colors
+		Color firstColor = new Color32(255, 138, 0, 255);
+		Color secondColor = new Color32(255, 0, 0, 255);
+		Color whiteColor = new Color32(255, 255, 255, 255);
 	}
 
-	public void checkCarSpeed(float carSpeed) {
-		if(carSpeed < 40) {
-			allowDrift = false;
-		} else {
-			allowDrift = true;
-		}
+	public void checkCarSpeed(bool carSpeed) {
+			allowDrift = carSpeed;
 	}
 
 	public void checkReverse(bool isReversed) {
@@ -52,11 +53,14 @@ public class DriftScoreManager : MonoBehaviour {
 			if (intensity > 100 && allowDrift && allowDriftReversed) {
 				driftScore++;
 
-				if(driftScore > 200 && driftScore < 300) { driftScoreText.color = new Color32(255, 138, 0, 255); }
-				else if(driftScore >= 300) { driftScoreText.color = new Color32(255, 0, 0, 255); }
-
 				if(driftScoreText.fontSize < 70) {
 					driftScoreText.fontSize += increaseFont;
+				} else {
+					if(driftScore > 200 && driftScore < 300 && driftScoreText.color != firstColor) {
+						driftScoreText.color = firstColor;
+					} else if(driftScore >= 300 && driftScoreText.color != secondColor) {
+						driftScoreText.color = secondColor;
+					}
 				}
 				if(driftScore > 0) {
 					driftScoreText.gameObject.SetActive(true);
@@ -72,8 +76,8 @@ public class DriftScoreManager : MonoBehaviour {
 				driftScore = 0;
 			}
 
-			if (intensity < 25) {
-				driftScoreText.color = new Color32(255, 255, 255, 255);
+			if (intensity < 25 && driftScoreText.color != whiteColor) {
+				driftScoreText.color = whiteColor;
 				driftScoreText.fontSize = 13;
 				driftScoreText.gameObject.SetActive(false);
 			}

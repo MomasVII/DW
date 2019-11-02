@@ -10,8 +10,8 @@ public class LoadingScreen : MonoBehaviour {
     public Slider slider;
 
 	public void LoadLevel(string levelName) {
-		StartCoroutine(LoadAsynchronously(levelName));
 		System.GC.Collect();
+		StartCoroutine(LoadAsynchronously(levelName));
 	}
 
 	IEnumerator LoadAsynchronously(string sceneName) {

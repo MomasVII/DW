@@ -23,6 +23,12 @@ public class Dot_Truck_Controller : MonoBehaviour {
 
 	private DriftScoreManager driftScoreManager;
 
+
+	//Car control variables
+	public Image SpeedCircle, SpeedCircleOutline;
+    public Sprite SpeedCircleImg, SpeedCircleOutlineImg, ReverseCircleImg, ReverseCircleOutlineImg;
+	public TMP_Text reverseText;
+
 	public void VisualizeWheel(Dot_Truck wheelPair)
 	{
 		Quaternion rot;
@@ -150,6 +156,43 @@ public class Dot_Truck_Controller : MonoBehaviour {
 		} else {
 			brakeTorque = 0;
 		}
+	}
+
+	public void reverseCar() {
+		reversed = !reversed;
+		if(reversed){
+			SpeedCircle.sprite = ReverseCircleImg;
+			SpeedCircleOutline.sprite = ReverseCircleOutlineImg;
+			reverseText.text = "R";
+		} else {
+			SpeedCircle.sprite = SpeedCircleImg;
+			SpeedCircleOutline.sprite = SpeedCircleOutlineImg;
+			reverseText.text = "KPH";
+		}
+	}
+
+	public void carLights() {
+		lightsOn = !lightsOn;
+	}
+
+	public void TurnLeft() {
+		turnLeft = true;
+	}
+	public void TurnRight() {
+		turnRight = true;
+	}
+	public void Accelerate() {
+		accelerate = true;
+	}
+
+	public void TurnLeftOff() {
+		turnLeft = false;
+	}
+	public void TurnRightOff() {
+		turnRight = false;
+	}
+	public void AccelerateOff() {
+		accelerate = false;
 	}
 
 
