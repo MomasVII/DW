@@ -14,6 +14,7 @@ public class Speedo : MonoBehaviour {
 	public TMP_Text carMetric;
 
 	float carsSpeed = 0.0f;
+	float checkSpeed = 0.0f;
 
 	private GameObject car;
 	private Rigidbody rb;

@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-
 [System.Serializable]
 public class Dot_Truck : System.Object
 {
@@ -23,11 +22,6 @@ public class Dot_Truck_Controller : MonoBehaviour {
 
 	private DriftScoreManager driftScoreManager;
 
-
-	//Car control variables
-	public Image SpeedCircle, SpeedCircleOutline;
-    public Sprite SpeedCircleImg, SpeedCircleOutlineImg, ReverseCircleImg, ReverseCircleOutlineImg;
-	public TMP_Text reverseText;
 
 	public void VisualizeWheel(Dot_Truck wheelPair)
 	{
@@ -157,43 +151,5 @@ public class Dot_Truck_Controller : MonoBehaviour {
 			brakeTorque = 0;
 		}
 	}
-
-	public void reverseCar() {
-		reversed = !reversed;
-		if(reversed){
-			SpeedCircle.sprite = ReverseCircleImg;
-			SpeedCircleOutline.sprite = ReverseCircleOutlineImg;
-			reverseText.text = "R";
-		} else {
-			SpeedCircle.sprite = SpeedCircleImg;
-			SpeedCircleOutline.sprite = SpeedCircleOutlineImg;
-			reverseText.text = "KPH";
-		}
-	}
-
-	public void carLights() {
-		lightsOn = !lightsOn;
-	}
-
-	public void TurnLeft() {
-		turnLeft = true;
-	}
-	public void TurnRight() {
-		turnRight = true;
-	}
-	public void Accelerate() {
-		accelerate = true;
-	}
-
-	public void TurnLeftOff() {
-		turnLeft = false;
-	}
-	public void TurnRightOff() {
-		turnRight = false;
-	}
-	public void AccelerateOff() {
-		accelerate = false;
-	}
-
 
 }

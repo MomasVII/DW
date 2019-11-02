@@ -6,7 +6,7 @@ public class Crash : MonoBehaviour
 {
 
     public AudioClip crash1, crash2, crash3;
-    AudioSource audio;
+    private AudioSource audio;
 
     void Start() {
         audio = GetComponent<AudioSource>();

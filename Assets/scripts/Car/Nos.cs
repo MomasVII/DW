@@ -17,9 +17,6 @@ public class Nos : MonoBehaviour {
 
     WheelCollider rearLeft, rearRight;
 
-    //Count seconds;
-    private int nextUpdate = 1;
-
     private ParticleSystem wildfireLeft, wildfireRight;
 
     private Rigidbody carRB;

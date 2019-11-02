@@ -388,7 +388,7 @@ public class ChangeCar : MonoBehaviour {
 	public void changeMyCar() {
 		//Debug.Log("Color: " + GameDataController.getCarsColor(selectedCar) + " " + PlayerPrefs.GetString("Car"+selectedCar+"Colour"));
 		//Debug.Log("SpecColor: " + GameDataController.getCarsSpecColor(selectedCar) + " " + PlayerPrefs.GetString("Car"+selectedCar+"SpecColour"));
-		Debug.Log(PlayerPrefs.GetString("GameData"));
+		//Debug.Log(PlayerPrefs.GetString("GameData"));
 		Destroy(theCar[currentCar]);
 		currentCar = selectedCar;
 		theCar[selectedCar] = Instantiate(Resources.Load("Car"+selectedCar, typeof(GameObject)), startPosition, transform.rotation) as GameObject;
@@ -458,10 +458,10 @@ public class ChangeCar : MonoBehaviour {
 		selectedColor = stats; //variable we send to savedata to assign to our car
 
 		//If car is owned and color has not been purchased show buy screen
-		if(!BuyGO.active && !GameDataController.getColor(selectedCar, colorName)) {
+		if(!BuyGO.activeSelf && !GameDataController.getColor(selectedCar, colorName)) {
 			paintMoney.SetActive(true);
 			paintGO.SetActive(true);
-		} else if(!BuyGO.active && GameDataController.getColor(selectedCar, colorName)) { //If car is owned and color has been purchased select color
+		} else if(!BuyGO.activeSelf && GameDataController.getColor(selectedCar, colorName)) { //If car is owned and color has been purchased select color
 			selectColorButton(globalColorName, myColors);
 			GameDataController.purchaseColor(globalColorName, selectedCar, "Stock");
 			PlayerPrefs.SetString("Car"+selectedCar+"Colour", stats); //Set the carColour playerpref
@@ -501,10 +501,10 @@ public class ChangeCar : MonoBehaviour {
 		selectedColor = stats; //variable we send to savedata to assign to our car
 
 		//If car is owned and color has not been purchased show buy screen
-		if(!BuyGO.active && !GameDataController.getColor(selectedCar, colorName)) {
+		if(!BuyGO.activeSelf && !GameDataController.getColor(selectedCar, colorName)) {
 			paintSpecMoney.SetActive(true);
 			paintSpecGO.SetActive(true);
-		} else if(!BuyGO.active && GameDataController.getColor(selectedCar, colorName)) { //If car is owned and color has been purchased select color
+		} else if(!BuyGO.activeSelf && GameDataController.getColor(selectedCar, colorName)) { //If car is owned and color has been purchased select color
 			selectColorButton(globalColorName, myColorsSpec);
 			PlayerPrefs.SetString("Car"+selectedCar+"SpecColour", stats); //Set the carColour playerpref
 			paintSpecGO.SetActive(false);

@@ -131,13 +131,10 @@ public class GameDataController : MonoBehaviour
 			if(sd.carId == currentCarId) { //If we own the car we are painting
 				if(upgradeType == "speed") {
 					sd.speed += 1;
-					Debug.Log("up Speed");
 				} else if(upgradeType == "acceleration") {
 					sd.acceleration += 1;
-					Debug.Log("up Acceleration");
 				} else if(upgradeType == "handling") {
 					sd.handling += 1;
-					Debug.Log("up Handling");
 				}
 			}
 		}

@@ -173,7 +173,6 @@ public class HomeColliders : MonoBehaviour {
 
     public IEnumerator downloadWorldRecordGhost() {
 
-
         WWW wwwHighscores = new WWW("https://www.undivided.games/DriftWorlds/GetScore.php?level="+sceneName);
         while (!wwwHighscores.isDone) {
             yield return null;
@@ -184,7 +183,6 @@ public class HomeColliders : MonoBehaviour {
             Debug.Log("There was an error getting the high score: " + wwwHighscores.error);
         } else {
             string[] szSplited = wwwHighscores.text.Split(',');
-            Debug.Log("Highscore returned: "+szSplited[0]+" "+szSplited[1]+" "+szSplited[2]);
 
             WRghostID = szSplited[0];
             WRcarUsed = int.Parse(szSplited[1]);

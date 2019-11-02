@@ -17,13 +17,18 @@ public class DriftScoreManager : MonoBehaviour {
 
 	private int findDemo;
 
+	//Colors
+	Color firstColor;
+	Color secondColor;
+	Color whiteColor;
+
 	public void Start() {
 		findDemo = GameObject.FindGameObjectsWithTag("Demo").Length;
 
 		//Colors
-		Color firstColor = new Color32(255, 138, 0, 255);
-		Color secondColor = new Color32(255, 0, 0, 255);
-		Color whiteColor = new Color32(255, 255, 255, 255);
+		firstColor = new Color32(255, 138, 0, 255);
+		secondColor = new Color32(255, 0, 0, 255);
+		whiteColor = new Color32(255, 255, 255, 255);
 	}
 
 	public void checkCarSpeed(bool carSpeed) {

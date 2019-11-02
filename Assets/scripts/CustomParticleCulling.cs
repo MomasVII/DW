@@ -13,7 +13,6 @@ public class CustomParticleCulling : MonoBehaviour
         // Do we need custom culling?
         if (target.proceduralSimulationSupported)
         {
-            Debug.Log(name + " does not need custom culling");
             enabled = false;
             return;
         }
@@ -40,7 +39,9 @@ public class CustomParticleCulling : MonoBehaviour
         if(m_CullingGroup != null)
             m_CullingGroup.enabled = false;
 
-        target.Play(true);
+        if(target != null) {
+            target.Play(true);
+        }
         SetRenderers(true);
     }
 

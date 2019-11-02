@@ -7,11 +7,10 @@ public class MoneyController : MonoBehaviour {
 
 	private int storePlayerCash;
 	private int incrementalMoney = 0;
-	private int nextUpdate = 1;
 
 	public TMP_Text playerCash;
 
-	bool isNet = true;
+	private bool isNet = true;
 
 	// Use this for initialization
 	void Awake () {
