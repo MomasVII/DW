@@ -1053,7 +1053,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   RotationModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 3
@@ -1938,7 +1938,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   ForceModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 1
@@ -4531,8 +4531,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82ef499625c299499b2c9c95db8d516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cullingRadius: 23.45
-  target: {fileID: 198000011442873090}
 --- !u!1 &1000013783101552
 GameObject:
   m_ObjectHideFlags: 0
@@ -9263,5 +9261,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82ef499625c299499b2c9c95db8d516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cullingRadius: 23.45
-  target: {fileID: 198000011442873090}

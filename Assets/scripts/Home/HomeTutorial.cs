@@ -41,6 +41,9 @@ public class HomeTutorial : MonoBehaviour {
 			showOffCamera.enabled = true;
 			mainCamera.enabled = false;
 			levelCamera.enabled = false;
+		} else {
+			Destroy(showOffCamera.gameObject);
+			Destroy(levelCamera.gameObject);
 		}
 
 	}

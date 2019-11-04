@@ -2,13 +2,28 @@
 
 public class CustomParticleCulling : MonoBehaviour
 {
-    public float cullingRadius = 10;
+    /*public float cullingRadius = 10;
     public ParticleSystem target;
 
     CullingGroup m_CullingGroup;
-    Renderer[] m_ParticleRenderers;
+    Renderer[] m_ParticleRenderers;*/
+    private ParticleSystem ps;
 
-    void OnEnable()
+    void Start() {
+        ps = GetComponent<ParticleSystem>();
+    }
+
+    void OnBecameVisible()
+    {
+        ps.Play();
+    }
+
+    void OnBecameInvisible()
+    {
+        ps.Stop();
+    }
+
+    /*void OnEnable()
     {
         // Do we need custom culling?
         if (target.proceduralSimulationSupported)
@@ -92,5 +107,5 @@ public class CustomParticleCulling : MonoBehaviour
             Gizmos.color = col;
             Gizmos.DrawWireSphere(transform.position, cullingRadius);
         }
-    }
+    }*/
 }
