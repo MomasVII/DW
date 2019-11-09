@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/scenes/Menu.unity
+    guid: 4d7e8dac06be5de44a8fc47a5846ef4d
+  - enabled: 1
     path: Assets/scenes/Garage.unity
     guid: 8ee7c70746a3d1041accded2ebc88e2d
   - enabled: 1
@@ -23,6 +26,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/Lava2.unity
     guid: 970591adb0b2fa64cbf053341c580230
+  - enabled: 1
+    path: Assets/scenes/Lava4.unity
+    guid: dfca7255ccb91214f88ed70f4c12ad6d
+  - enabled: 1
+    path: Assets/scenes/Snow2.unity
+    guid: f2bd5acd9f7f2854487c06d58f93ad78
+  - enabled: 1
+    path: Assets/scenes/Desert2.unity
+    guid: 956a144c5141e0a4d98c673151434910
   - enabled: 1
     path: Assets/scenes/Lava3.unity
     guid: 5f4043bc8b7da3c4084da305b5e8ddde

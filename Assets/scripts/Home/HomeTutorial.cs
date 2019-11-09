@@ -9,7 +9,7 @@ public class HomeTutorial : MonoBehaviour {
 
 	public GameObject lightsButton, resetButton, panButton;
 
-	public GameObject controls, speedo, nextButton;
+	public GameObject controls, speedo, nextButton, nos;
 
 	//Speech Panel
 	public GameObject speechPanel;
@@ -36,6 +36,7 @@ public class HomeTutorial : MonoBehaviour {
 			resetButton.SetActive(false);
 			controls.SetActive(false);
 			speedo.SetActive(false);
+			nos.SetActive(false);
 			nextButton.SetActive(true);
 
 			showOffCamera.enabled = true;
@@ -43,7 +44,6 @@ public class HomeTutorial : MonoBehaviour {
 			levelCamera.enabled = false;
 		} else {
 			Destroy(showOffCamera.gameObject);
-			Destroy(levelCamera.gameObject);
 		}
 
 	}
@@ -73,12 +73,13 @@ public class HomeTutorial : MonoBehaviour {
 				resetButton.SetActive(true);
 				panButton.SetActive(true);
 				//lightsButton.SetActive(true);
-				StartCoroutine(ShowText("The buttons on your left will allow you to reset your car to the beginning and zoom and pan around the level. You can tap the middle of the screen to upright your car should you even end upside down. "));
+				StartCoroutine(ShowText("The buttons on your left will allow you to reset your car to the beginning. There is also a zoom and pan button should you ever get lost. You can tap the middle of the screen to upright your car should you ever end upside down."));
 			} else if(!typing && speechIndex == 5 && startTyping) {
 				startTyping = false;
 				typing = true;
 				controls.SetActive(true);
 				speedo.SetActive(true);
+				nos.SetActive(true);
 				StartCoroutine(ShowText("Here are your controls and speedometer. You can tap the speedo to change into Reverse and tapping it again will bring you back into Drive."));
 			} else if(!typing && speechIndex == 6 && startTyping) {
 				startTyping = false;

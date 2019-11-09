@@ -36,8 +36,8 @@ public class MoneyController : MonoBehaviour {
 	IEnumerator payMoney() {
 		WaitForSeconds delay = new WaitForSeconds(1f);
 	     for(;;) {
-			 storePlayerCash += 5000;
- 			incrementalMoney += 5000;
+			storePlayerCash += 10;
+ 			incrementalMoney += 10;
  			if(incrementalMoney < 200000) {
  				updatePlayerMoney();
  				saveMoney();

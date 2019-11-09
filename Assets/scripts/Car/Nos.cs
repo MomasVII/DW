@@ -40,13 +40,15 @@ public class Nos : MonoBehaviour {
     IEnumerator addNos() {
         WaitForSeconds delay = new WaitForSeconds(1f);
 	    for(;;) {
-             fillPercent += 0.02f;
-             flameColored.fillAmount = fillPercent;
-             if(fillPercent > 0.99f) {
-                 flameGlow.SetActive(true);
+                if(rearRight.isGrounded || rearLeft.isGrounded) {
+                 fillPercent += 0.02f;
+                 flameColored.fillAmount = fillPercent;
+                 if(fillPercent > 0.99f) {
+                     flameGlow.SetActive(true);
+                 }
+                 if(fillPercent > 1) { fillPercent = 1; }
              }
-             if(fillPercent > 1) { fillPercent = 1; }
-	         // execute block of code here
+    	         // execute block of code here
 	         yield return delay;
 	    }
 	}

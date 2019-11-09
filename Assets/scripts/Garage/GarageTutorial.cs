@@ -79,7 +79,7 @@ public class GarageTutorial : MonoBehaviour {
 				startTyping = false;
 				typing = true;
 				errorText.text = "";
-				StartCoroutine(ShowText("So "+mainInputField.text+", my friends tell me you're one hell of a racer. I'm glad you've decided to work for me. If you're as good a driver as people say there should be no problem."));
+				StartCoroutine(ShowText("So you're the driver I've heard so much about. I'm glad you've decided to join our team."));
 				inputField.SetActive(false);
 			} else if(!typing && speechIndex == 3 && startTyping) {
 				startTyping = false;

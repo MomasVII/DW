@@ -435,6 +435,7 @@ public class ChangeCar : MonoBehaviour {
 
 			GameDataController.purchaseCar(selectedCar, (int)dict[selectedCar.ToString()]["Speed"], (int)dict[selectedCar.ToString()]["Acceleration"], (int)dict[selectedCar.ToString()]["Handling"]);
 			ownedCar();
+			PlayerPrefs.SetInt("carCount", PlayerPrefs.GetInt("carCount")+1);
 			cashSource.PlayOneShot(cashSource.clip, 0.50f); //Cash audio
 
 		} else {
@@ -730,7 +731,7 @@ public class ChangeCar : MonoBehaviour {
 	}
 
 	public int getTotalStars() {
-		string[] levels = new string[7] {"Grass", "Grass2", "Grass3", "Lava2", "Lava3", "Snow", "Desert"};
+		string[] levels = new string[8] {"Grass", "Grass2", "Grass3", "Lava2", "Lava3", "Snow", "Desert", "Desert2"};
 		int totalStars = 0;
 		foreach (string level in levels) {
 			if(PlayerPrefs.HasKey(level+"-Stars")) {

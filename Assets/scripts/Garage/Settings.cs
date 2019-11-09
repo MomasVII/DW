@@ -60,14 +60,14 @@ public class Settings : MonoBehaviour
     public void changeQuality() {
         float qualityFloat = qualitySlider.value*100;
         PlayerPrefs.SetFloat("quality", qualityFloat);
-        if(qualityFloat < 25) {
+        if(qualityFloat < 18) {
+            quality.ChangeQuality(0);
+        } else if(qualityFloat >= 18 && qualityFloat < 50) {
             quality.ChangeQuality(1);
-        } else if(qualityFloat >= 25 && qualityFloat < 50) {
+        } else if(qualityFloat >= 50 && qualityFloat < 83) {
             quality.ChangeQuality(2);
-        } else if(qualityFloat >= 50 && qualityFloat < 75) {
+        }  else if(qualityFloat > 83) {
             quality.ChangeQuality(3);
-        }  else if(qualityFloat > 75) {
-            quality.ChangeQuality(4);
         }
     }
 

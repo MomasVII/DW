@@ -17,7 +17,7 @@ public class EnableLevels : MonoBehaviour {
 
 		PlayerPrefs.SetInt(levelName+"-StarsToUnlock", enableScore);
 
-		string[] levels = new string[7] {"Grass", "Grass2", "Grass3", "Lava2", "Lava3", "Snow", "Desert"};
+		string[] levels = new string[8] {"Grass", "Grass2", "Grass3", "Lava2", "Lava3", "Snow", "Desert", "Desert2"};
 		int totalStars = 0;
 		foreach (string level in levels) {
 			totalStars += PlayerPrefs.GetInt(level+"-Stars", 0);
