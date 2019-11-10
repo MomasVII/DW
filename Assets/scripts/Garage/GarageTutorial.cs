@@ -6,7 +6,7 @@ using TMPro;
 
 public class GarageTutorial : MonoBehaviour {
 
-	public GameObject exitButton, topMoney, noAds, topGold, settings;
+	public GameObject exitButton, topMoney, noAds, topGold;
 
 	public GameObject bank, carInfo, adButton;
 
@@ -44,7 +44,6 @@ public class GarageTutorial : MonoBehaviour {
 
 		exitButton.SetActive(false);
 		topMoney.SetActive(false);
-		settings.SetActive(false);
 		noAds.SetActive(false);
 		topGold.SetActive(false);
 

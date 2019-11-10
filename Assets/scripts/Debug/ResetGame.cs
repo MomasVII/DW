@@ -20,7 +20,7 @@ public class ResetGame : MonoBehaviour {
 
         PlayerPrefs.DeleteAll();
 
-        string[] levels = new string[8] {"Grass", "Grass2", "Grass3", "Lava2", "Lava3", "Snow", "Desert", "Desert2"};
+        string[] levels = new string[9] {"Grass", "Grass2", "Grass3", "Lava2", "Lava3", "Snow", "Snow2", "Desert", "Desert2"};
 		foreach (string level in levels) {
             DeleteFile(level+"-record"); //Delete saved game Files
             DeleteFile(level+"-ghost"); //Delete saved game Files

@@ -21,6 +21,9 @@ public class GarageCollider : MonoBehaviour
     //Slow car on enter
     private Dot_Truck_Controller dotTruckController;
 
+    //Status text when enetering level area
+    public Text grassStatusText, desertStatusText, snowStatusText, lavaStatusText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +51,7 @@ public class GarageCollider : MonoBehaviour
 
         totalStars = 0;
         starsTotal = 0;
-        string[] snowLevels = new string[1] {"Snow"};
+        string[] snowLevels = new string[2] {"Snow", "Snow2"};
 		foreach (string snowLevel in snowLevels) {
 			totalStars += PlayerPrefs.GetInt(snowLevel+"-Stars", 0);
             starsTotal += 5;

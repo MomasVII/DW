@@ -81,6 +81,11 @@ public class ChangeCar : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		//Set sfx audio volume
+		cashSource.volume = PlayerPrefs.GetFloat("musicVolume");
+		engineStartSource.volume = PlayerPrefs.GetFloat("musicVolume");
+		sprayPaintSource.volume = PlayerPrefs.GetFloat("musicVolume");
+
 		myColors.Add("Red", "205000000");
 		myColors.Add("Orange", "255161000");
 		myColors.Add("Yellow", "255236000");
@@ -731,7 +736,7 @@ public class ChangeCar : MonoBehaviour {
 	}
 
 	public int getTotalStars() {
-		string[] levels = new string[8] {"Grass", "Grass2", "Grass3", "Lava2", "Lava3", "Snow", "Desert", "Desert2"};
+		string[] levels = new string[9] {"Grass", "Grass2", "Grass3", "Lava2", "Lava3", "Snow", "Snow2", "Desert", "Desert2"};
 		int totalStars = 0;
 		foreach (string level in levels) {
 			if(PlayerPrefs.HasKey(level+"-Stars")) {

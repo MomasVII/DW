@@ -57,7 +57,7 @@ public class HomeColliders : MonoBehaviour {
         PlayerPrefs.DeleteKey("OldTotalStars");*/
 
         //Get stars to lock or unlock level
-        string[] levels = new string[8] {"Grass", "Grass2", "Grass3", "Lava2", "Lava3", "Snow", "Desert", "Desert2"};
+        string[] levels = new string[9] {"Grass", "Grass2", "Grass3", "Lava2", "Lava3", "Snow", "Snow2", "Desert", "Desert2"};
 		foreach (string level in levels) {
 			totalStars += PlayerPrefs.GetInt(level+"-Stars", 0);
         }

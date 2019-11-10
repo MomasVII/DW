@@ -60,6 +60,10 @@ public class Timer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		//Set sound effects audio
+		failSound.volume = PlayerPrefs.GetFloat("musicVolume");
+
 		for (int i = 0; i < fireworks.Length; i++) {
 			fireworks[i].Stop();
 		}
@@ -186,7 +190,7 @@ public class Timer : MonoBehaviour {
 		for (int i = 0; i < fireworks.Length; i++) {
 			fireworks[i].Stop();
 		}
-		
+
 		dotTruck.slowCar(false);
 		star1.sprite = starSelected;
 		star2.sprite = starSelected;

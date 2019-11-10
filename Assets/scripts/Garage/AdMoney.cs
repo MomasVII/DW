@@ -11,6 +11,10 @@ public class AdMoney : MonoBehaviour
 	//Used to set Ad money to player cash
 	private MoneyController moneyController;
 
+	void Start() {
+		success.volume = PlayerPrefs.GetFloat("musicVolume");
+	}
+
     public void PlayRewardedAd() {
         UnityAdsManager.Instance.ShowRewardedAd(OnRewardedAdClosed);
     }
