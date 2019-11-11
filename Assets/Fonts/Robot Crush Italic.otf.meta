@@ -11,9 +11,12 @@ TrueTypeFontImporter:
   fontName: Robot Crush
   fontNames:
   - Robot Crush
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 4da2a8915cc483242b1d934d8efcfdcd, type: 3}
+  - {fileID: 12800000, guid: 3b6f19d39ce025e4a90724e943ceeea1, type: 3}
+  - {fileID: 12800000, guid: bc83c39814f3c5c4cbabf6612a6680bf, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1

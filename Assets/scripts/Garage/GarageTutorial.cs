@@ -17,7 +17,7 @@ public class GarageTutorial : MonoBehaviour {
 	public TMP_Text mainInputField, errorText;
 
 	//Speech variables
-	private float delay = 0.05f; //0.04
+	private float delay = 0.005f; //0.04
 	private string currentText = "";
 	public TMP_Text characterSpeech;
 
