@@ -79,7 +79,6 @@ MonoBehaviour:
   starUnselected: {fileID: 0}
   UIManagerScript: {fileID: 0}
   openPanelAnim: {fileID: 0}
-  ErrorText: {fileID: 0}
   unlockedGO: {fileID: 0}
   lockedGO: {fileID: 0}
   starsNeeded: {fileID: 0}
