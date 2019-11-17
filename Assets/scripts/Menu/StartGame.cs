@@ -9,6 +9,12 @@ public class StartGame : MonoBehaviour
     public Slider slider;
 
     void Start() {
+
+        if(!PlayerPrefs.HasKey("QualitySetting")) {
+            PlayerPrefs.SetInt("Quality", 2);
+            PlayerPrefs.SetFloat("QualitySetting", 66);
+        }
+
 		StartCoroutine(LoadAsynchronously("Garage"));
 
         //Set car count to 0

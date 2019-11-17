@@ -98,7 +98,7 @@ public class Quality : MonoBehaviour {
         //Set quality
         QualitySettings.SetQualityLevel(q, true);
 
-        PlayerPrefs.SetInt("QualitySetting", q);
+        PlayerPrefs.SetInt("Quality", q);
 
         //Show and hide elements based on quality settings
         ChangeAdditionalQuality();
