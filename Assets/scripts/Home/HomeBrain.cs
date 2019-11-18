@@ -9,9 +9,6 @@ public class HomeBrain : MonoBehaviour {
     public Vector3 startPosition;
     public float yAngle;
 
-    //Get Quality Change Script
-    public Quality QualityScript;
-
     //preload used shaders
     public ShaderVariantCollection shaderCollection;
 

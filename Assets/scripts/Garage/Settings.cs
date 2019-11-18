@@ -22,10 +22,11 @@ public class Settings : MonoBehaviour
 
     //Get Quality scripts and change based on slider
     private Quality quality;
+    private float qualityFloat;
 
     public void Start() {
         quality = GetComponent<Quality>();
-        qualitySlider.value = PlayerPrefs.GetFloat("quality")/100;
+        qualitySlider.value = PlayerPrefs.GetFloat("QualitySetting")/100;
         musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
         changeMetric(PlayerPrefs.GetString("metrics"));
@@ -40,10 +41,23 @@ public class Settings : MonoBehaviour
 
     public void showSettings() {
 		isActive = !isActive;
-		carDetailsCanvas.SetActive(isActive);
-		carStatsCanvas.SetActive(isActive);
-		colorCanvas.SetActive(isActive);
-		showPanel.SetActive(!isActive);
+        if(PlayerPrefs.HasKey("homeTutorial")) {
+    		carDetailsCanvas.SetActive(isActive);
+    		carStatsCanvas.SetActive(isActive);
+    		colorCanvas.SetActive(isActive);
+        }
+        showPanel.SetActive(!isActive);
+        if(isActive) {
+            if(qualityFloat < 18) {
+                quality.ChangeQuality(0);
+            } else if(qualityFloat >= 18 && qualityFloat < 50) {
+                quality.ChangeQuality(1);
+            } else if(qualityFloat >= 50 && qualityFloat < 83) {
+                quality.ChangeQuality(2);
+            }  else if(qualityFloat > 83) {
+                quality.ChangeQuality(3);
+            }
+        }
 	}
 
     public void changeMetric(string myMetric) {
@@ -58,17 +72,8 @@ public class Settings : MonoBehaviour
     }
 
     public void changeQuality() {
-        float qualityFloat = qualitySlider.value*100;
-        PlayerPrefs.SetFloat("quality", qualityFloat);
-        if(qualityFloat < 18) {
-            quality.ChangeQuality(0);
-        } else if(qualityFloat >= 18 && qualityFloat < 50) {
-            quality.ChangeQuality(1);
-        } else if(qualityFloat >= 50 && qualityFloat < 83) {
-            quality.ChangeQuality(2);
-        }  else if(qualityFloat > 83) {
-            quality.ChangeQuality(3);
-        }
+        qualityFloat = qualitySlider.value*100;
+        PlayerPrefs.SetFloat("QualitySetting", qualityFloat);
     }
 
     public void changeMusicVolume() {
